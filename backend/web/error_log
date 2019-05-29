@@ -1,0 +1,95 @@
+[11-May-2019 19:50:12 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/mybuildi/igotour.services/backend/controllers/UserController.php on line 107
+[12-May-2019 10:06:30 Asia/Kuala_Lumpur] PHP Fatal error:  Call to a member function delete() on null in /home/mybuildi/igotour.services/backend/controllers/UserController.php on line 175
+[12-May-2019 10:08:18 Asia/Kuala_Lumpur] PHP Fatal error:  Call to a member function delete() on null in /home/mybuildi/igotour.services/backend/controllers/UserController.php on line 175
+[12-May-2019 10:09:04 Asia/Kuala_Lumpur] PHP Fatal error:  Call to a member function delete() on null in /home/mybuildi/igotour.services/backend/controllers/UserController.php on line 175
+[12-May-2019 10:09:29 Asia/Kuala_Lumpur] PHP Fatal error:  Call to a member function delete() on null in /home/mybuildi/igotour.services/backend/controllers/UserController.php on line 175
+[12-May-2019 10:11:02 Asia/Kuala_Lumpur] PHP Fatal error:  Call to a member function delete() on null in /home/mybuildi/igotour.services/backend/controllers/UserController.php on line 175
+[12-May-2019 10:18:46 Asia/Kuala_Lumpur] PHP Fatal error:  Call to a member function delete() on null in /home/mybuildi/igotour.services/backend/controllers/UserController.php on line 175
+[12-May-2019 10:19:12 Asia/Kuala_Lumpur] PHP Fatal error:  Call to a member function delete() on null in /home/mybuildi/igotour.services/backend/controllers/UserController.php on line 175
+[12-May-2019 10:27:27 Asia/Kuala_Lumpur] PHP Fatal error:  Call to a member function delete() on null in /home/mybuildi/igotour.services/backend/controllers/UserController.php on line 175
+[14-May-2019 09:07:14 Asia/Kuala_Lumpur] PHP Fatal error:  Call to a member function delete() on null in /home/mybuildi/igotour.services/backend/controllers/UserController.php on line 175
+[19-May-2019 12:22:30 Asia/Kuala_Lumpur] PHP Fatal error:  Call to a member function delete() on null in /home/mybuildi/igotour.services/backend/controllers/UserController.php on line 175
+[21-May-2019 11:18:29 Asia/Kuala_Lumpur] PHP Fatal error:  Call to a member function delete() on null in /home/mybuildi/igotour.services/backend/controllers/UserController.php on line 175
+[21-May-2019 11:18:45 Asia/Kuala_Lumpur] PHP Fatal error:  Call to a member function delete() on null in /home/mybuildi/igotour.services/backend/controllers/UserController.php on line 175
+[21-May-2019 11:18:58 Asia/Kuala_Lumpur] PHP Fatal error:  Call to a member function delete() on null in /home/mybuildi/igotour.services/backend/controllers/UserController.php on line 175
+[21-May-2019 11:19:13 Asia/Kuala_Lumpur] PHP Fatal error:  Call to a member function delete() on null in /home/mybuildi/igotour.services/backend/controllers/UserController.php on line 175
+[21-May-2019 11:20:07 Asia/Kuala_Lumpur] PHP Fatal error:  Call to a member function delete() on null in /home/mybuildi/igotour.services/backend/controllers/UserController.php on line 175
+[21-May-2019 11:42:34 Asia/Kuala_Lumpur] An Error occurred while handling another error:
+exception 'yii\web\HeadersAlreadySentException' with message 'Headers already sent.' in /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/ErrorHandler.php(135): yii\web\Response->send()
+#2 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\web\HeadersAlreadySentException))
+#3 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\HeadersAlreadySentException))
+#4 {main}
+Previous exception:
+exception 'yii\web\HeadersAlreadySentException' with message 'Headers already sent.' in /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/base/Application.php(392): yii\web\Response->send()
+#2 /home/mybuildi/igotour.services/backend/web/index.php(17): yii\base\Application->run()
+#3 {main}
+$_SERVER = [
+    'CONTENT_LENGTH' => '252',
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/mybuildi/igotour.services/backend/web',
+    'CONTEXT_PREFIX' => '',
+    'DOCUMENT_ROOT' => '/home/mybuildi/igotour.services/backend/web',
+    'GATEWAY_INTERFACE' => 'CGI/1.1',
+    'H2PUSH' => 'on',
+    'H2_PUSH' => 'on',
+    'H2_PUSHED' => '',
+    'H2_PUSHED_ON' => '',
+    'H2_STREAM_ID' => '1',
+    'H2_STREAM_TAG' => '78-1',
+    'HTTP2' => 'on',
+    'HTTPS' => 'on',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,ms;q=0.8,id;q=0.7',
+    'HTTP_CACHE_CONTROL' => 'max-age=0',
+    'HTTP_COOKIE' => 'advanced-backend=d0pn1420c21evcl367m03e5j55; _identity-backend=99e73b4cf077bd84b0c517c1199be82bf0ec27049994585a77f812de1e65a178a%3A2%3A%7Bi%3A0%3Bs%3A17%3A%22_identity-backend%22%3Bi%3A1%3Bs%3A46%3A%22%5B2%2C%222bp_R4S6fm5zTvM2hD_nAUYXMvfsN5Wp%22%2C2592000%5D%22%3B%7D; _csrf-backend=c5e8a56e167644763954cabc493ffdc805983b3ad445b0568c7b804f9e7fa23da%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22EmqVJunL2ISrwSkZu9H89COVpM8Sk7e3%22%3B%7D',
+    'HTTP_HOST' => 'admin.igotour.services',
+    'HTTP_ORIGIN' => 'https://admin.igotour.services',
+    'HTTP_REFERER' => 'https://admin.igotour.services/user/update?id=64',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36',
+    'PATH' => '/bin:/usr/bin',
+    'QUERY_STRING' => 'id=64',
+    'REDIRECT_H2PUSH' => 'on',
+    'REDIRECT_H2_PUSH' => 'on',
+    'REDIRECT_H2_PUSHED' => '',
+    'REDIRECT_H2_PUSHED_ON' => '',
+    'REDIRECT_H2_STREAM_ID' => '1',
+    'REDIRECT_H2_STREAM_TAG' => '78-1',
+    'REDIRECT_HTTP2' => 'on',
+    'REDIRECT_HTTPS' => 'on',
+    'REDIRECT_QUERY_STRING' => 'id=64',
+    'REDIRECT_SSL_TLS_SNI' => 'admin.igotour.services',
+    'REDIRECT_STATUS' => '200',
+    'REDIRECT_UNIQUE_ID' => 'XONzqh9ohwrci6he@lKs1AAAAAE',
+    'REDIRECT_URL' => '/user/update',
+    'REMOTE_ADDR' => '124.13.236.4',
+    'REMOTE_PORT' => '49360',
+    'REQUEST_METHOD' => 'POST',
+    'REQUEST_SCHEME' => 'https',
+    'REQUEST_URI' => '/user/update?id=64',
+    'SCRIPT_FILENAME' => '/home/mybuildi/igotour.services/backend/web/index.php',
+    'SCRIPT_NAME' => '/index.php',
+    'SERVER_ADDR' => '103.6.198.224',
+    'SERVER_ADMIN' => 'webmaster@admin.igotour.services',
+    'SERVER_NAME' => 'admin.igotour.services',
+    'SERVER_PORT' => '443',
+    'SERVER_PROTOCOL' => 'HTTP/2.0',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SSL_TLS_SNI' => 'admin.igotour.services',
+    'UNIQUE_ID' => 'XONzqh9ohwrci6he@lKs1AAAAAE',
+    'PHP_SELF' => '/index.php',
+    'REQUEST_TIME_FLOAT' => 1558410154.14294910430908203125,
+    'REQUEST_TIME' => 1558410154,
+    'argv' => [
+        'id=64',
+    ],
+    'argc' => 1,
+]

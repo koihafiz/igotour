@@ -1,0 +1,346 @@
+[22-Apr-2019 11:06:13 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected ')' in /home/mybuildi/igotour.services/frontend/models/SignupForm.php on line 31
+[22-Apr-2019 11:06:22 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected ')' in /home/mybuildi/igotour.services/frontend/models/SignupForm.php on line 31
+[29-Apr-2019 21:17:17 Asia/Kuala_Lumpur] PHP Fatal error:  Class 'common\modules\api\controllers\SignupForm' not found in /home/mybuildi/igotour.services/common/modules/api/controllers/MobileController.php on line 92
+[29-Apr-2019 21:19:16 Asia/Kuala_Lumpur] PHP Fatal error:  Class 'common\modules\api\controllers\SignupForm' not found in /home/mybuildi/igotour.services/common/modules/api/controllers/MobileController.php on line 92
+[29-Apr-2019 21:22:56 Asia/Kuala_Lumpur] PHP Fatal error:  Class 'common\modules\api\controllers\SignupForm' not found in /home/mybuildi/igotour.services/common/modules/api/controllers/MobileController.php on line 92
+[29-Apr-2019 21:29:03 Asia/Kuala_Lumpur] PHP Fatal error:  Class 'common\modules\api\controllers\SignupForm' not found in /home/mybuildi/igotour.services/common/modules/api/controllers/MobileController.php on line 92
+[29-Apr-2019 21:30:08 Asia/Kuala_Lumpur] PHP Fatal error:  Class 'common\modules\api\controllers\SignupForm' not found in /home/mybuildi/igotour.services/common/modules/api/controllers/MobileController.php on line 92
+[29-Apr-2019 21:30:14 Asia/Kuala_Lumpur] PHP Fatal error:  Class 'common\modules\api\controllers\SignupForm' not found in /home/mybuildi/igotour.services/common/modules/api/controllers/MobileController.php on line 92
+[29-Apr-2019 21:30:53 Asia/Kuala_Lumpur] PHP Fatal error:  Class 'common\modules\api\controllers\SignupForm' not found in /home/mybuildi/igotour.services/common/modules/api/controllers/MobileController.php on line 92
+[29-Apr-2019 21:36:19 Asia/Kuala_Lumpur] PHP Fatal error:  Class 'common\modules\api\controllers\SignupForm' not found in /home/mybuildi/igotour.services/common/modules/api/controllers/MobileController.php on line 92
+[30-Apr-2019 11:25:29 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected '{' in /home/mybuildi/igotour.services/frontend/controllers/ProfileController.php on line 154
+[01-May-2019 01:38:10 Asia/Kuala_Lumpur] An Error occurred while handling another error:
+exception 'yii\web\HeadersAlreadySentException' with message 'Headers already sent in /home/mybuildi/igotour.services/common/modules/api/controllers/MobileController.php on line 124.' in /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/ErrorHandler.php(135): yii\web\Response->send()
+#2 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\web\HeadersAlreadySentException))
+#3 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\HeadersAlreadySentException))
+#4 {main}
+Previous exception:
+exception 'yii\web\HeadersAlreadySentException' with message 'Headers already sent in /home/mybuildi/igotour.services/common/modules/api/controllers/MobileController.php on line 124.' in /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/base/Application.php(392): yii\web\Response->send()
+#2 /home/mybuildi/igotour.services/frontend/web/index.php(17): yii\base\Application->run()
+#3 {main}
+$_SERVER = [
+    'CONTENT_LENGTH' => '141',
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryf35A3tRIR4CMnfmn',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/mybuildi/igotour.services/frontend/web',
+    'CONTEXT_PREFIX' => '',
+    'DOCUMENT_ROOT' => '/home/mybuildi/igotour.services/frontend/web',
+    'GATEWAY_INTERFACE' => 'CGI/1.1',
+    'H2PUSH' => 'on',
+    'H2_PUSH' => 'on',
+    'H2_PUSHED' => '',
+    'H2_PUSHED_ON' => '',
+    'H2_STREAM_ID' => '1',
+    'H2_STREAM_TAG' => '791-1',
+    'HTTP2' => 'on',
+    'HTTPS' => 'on',
+    'HTTP_ACCEPT' => '*/*',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,ms;q=0.8,id;q=0.7,la;q=0.6',
+    'HTTP_CACHE_CONTROL' => 'no-cache',
+    'HTTP_HOST' => 'igotour.services',
+    'HTTP_ORIGIN' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+    'HTTP_POSTMAN_TOKEN' => '94edef6a-9dae-920b-1bad-75ff166c1287',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
+    'HTTP_X_HTTPS' => '1',
+    'PATH' => '/bin:/usr/bin',
+    'QUERY_STRING' => '',
+    'REDIRECT_H2PUSH' => 'on',
+    'REDIRECT_H2_PUSH' => 'on',
+    'REDIRECT_H2_PUSHED' => '',
+    'REDIRECT_H2_PUSHED_ON' => '',
+    'REDIRECT_H2_STREAM_ID' => '1',
+    'REDIRECT_H2_STREAM_TAG' => '791-1',
+    'REDIRECT_HTTP2' => 'on',
+    'REDIRECT_HTTPS' => 'on',
+    'REDIRECT_SCRIPT_URI' => 'https://igotour.services/api/mobile/find-services',
+    'REDIRECT_SCRIPT_URL' => '/api/mobile/find-services',
+    'REDIRECT_SSL_TLS_SNI' => 'igotour.services',
+    'REDIRECT_STATUS' => '200',
+    'REDIRECT_UNIQUE_ID' => 'XMiIAGwqMHCC9dceaZJdLgAAAAE',
+    'REDIRECT_URL' => '/api/mobile/find-services',
+    'REMOTE_ADDR' => '175.136.202.249',
+    'REMOTE_PORT' => '60296',
+    'REQUEST_METHOD' => 'POST',
+    'REQUEST_SCHEME' => 'https',
+    'REQUEST_URI' => '/api/mobile/find-services',
+    'SCRIPT_FILENAME' => '/home/mybuildi/igotour.services/frontend/web/index.php',
+    'SCRIPT_NAME' => '/index.php',
+    'SCRIPT_URI' => 'https://igotour.services/api/mobile/find-services',
+    'SCRIPT_URL' => '/api/mobile/find-services',
+    'SERVER_ADDR' => '103.6.198.224',
+    'SERVER_ADMIN' => 'webmaster@igotour.mybuildingsmart.org.my',
+    'SERVER_NAME' => 'igotour.services',
+    'SERVER_PORT' => '443',
+    'SERVER_PROTOCOL' => 'HTTP/2.0',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SSL_TLS_SNI' => 'igotour.services',
+    'UNIQUE_ID' => 'XMiIAGwqMHCC9dceaZJdLgAAAAE',
+    'PHP_SELF' => '/index.php',
+    'REQUEST_TIME_FLOAT' => 1556645890.0944049358367919921875,
+    'REQUEST_TIME' => 1556645890,
+    'argv' => [],
+    'argc' => 0,
+]
+[01-May-2019 01:38:59 Asia/Kuala_Lumpur] An Error occurred while handling another error:
+exception 'yii\web\HeadersAlreadySentException' with message 'Headers already sent in /home/mybuildi/igotour.services/common/modules/api/controllers/MobileController.php on line 124.' in /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/ErrorHandler.php(135): yii\web\Response->send()
+#2 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\web\HeadersAlreadySentException))
+#3 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\HeadersAlreadySentException))
+#4 {main}
+Previous exception:
+exception 'yii\web\HeadersAlreadySentException' with message 'Headers already sent in /home/mybuildi/igotour.services/common/modules/api/controllers/MobileController.php on line 124.' in /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/base/Application.php(392): yii\web\Response->send()
+#2 /home/mybuildi/igotour.services/frontend/web/index.php(17): yii\base\Application->run()
+#3 {main}
+$_SERVER = [
+    'CONTENT_LENGTH' => '141',
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryejYfBNz1SUyFSvAD',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/mybuildi/igotour.services/frontend/web',
+    'CONTEXT_PREFIX' => '',
+    'DOCUMENT_ROOT' => '/home/mybuildi/igotour.services/frontend/web',
+    'GATEWAY_INTERFACE' => 'CGI/1.1',
+    'H2PUSH' => 'on',
+    'H2_PUSH' => 'on',
+    'H2_PUSHED' => '',
+    'H2_PUSHED_ON' => '',
+    'H2_STREAM_ID' => '1',
+    'H2_STREAM_TAG' => '591-1',
+    'HTTP2' => 'on',
+    'HTTPS' => 'on',
+    'HTTP_ACCEPT' => '*/*',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,ms;q=0.8,id;q=0.7,la;q=0.6',
+    'HTTP_CACHE_CONTROL' => 'no-cache',
+    'HTTP_HOST' => 'igotour.services',
+    'HTTP_ORIGIN' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+    'HTTP_POSTMAN_TOKEN' => '8d009d6b-6a08-3285-5d26-f91e11a5cb50',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
+    'HTTP_X_HTTPS' => '1',
+    'PATH' => '/bin:/usr/bin',
+    'QUERY_STRING' => '',
+    'REDIRECT_H2PUSH' => 'on',
+    'REDIRECT_H2_PUSH' => 'on',
+    'REDIRECT_H2_PUSHED' => '',
+    'REDIRECT_H2_PUSHED_ON' => '',
+    'REDIRECT_H2_STREAM_ID' => '1',
+    'REDIRECT_H2_STREAM_TAG' => '591-1',
+    'REDIRECT_HTTP2' => 'on',
+    'REDIRECT_HTTPS' => 'on',
+    'REDIRECT_SCRIPT_URI' => 'https://igotour.services/api/mobile/find-services',
+    'REDIRECT_SCRIPT_URL' => '/api/mobile/find-services',
+    'REDIRECT_SSL_TLS_SNI' => 'igotour.services',
+    'REDIRECT_STATUS' => '200',
+    'REDIRECT_UNIQUE_ID' => 'XMiIM5SKFMgnXRKcqGBYTQAAAAE',
+    'REDIRECT_URL' => '/api/mobile/find-services',
+    'REMOTE_ADDR' => '175.136.202.249',
+    'REMOTE_PORT' => '60506',
+    'REQUEST_METHOD' => 'POST',
+    'REQUEST_SCHEME' => 'https',
+    'REQUEST_URI' => '/api/mobile/find-services',
+    'SCRIPT_FILENAME' => '/home/mybuildi/igotour.services/frontend/web/index.php',
+    'SCRIPT_NAME' => '/index.php',
+    'SCRIPT_URI' => 'https://igotour.services/api/mobile/find-services',
+    'SCRIPT_URL' => '/api/mobile/find-services',
+    'SERVER_ADDR' => '103.6.198.224',
+    'SERVER_ADMIN' => 'webmaster@igotour.mybuildingsmart.org.my',
+    'SERVER_NAME' => 'igotour.services',
+    'SERVER_PORT' => '443',
+    'SERVER_PROTOCOL' => 'HTTP/2.0',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SSL_TLS_SNI' => 'igotour.services',
+    'UNIQUE_ID' => 'XMiIM5SKFMgnXRKcqGBYTQAAAAE',
+    'PHP_SELF' => '/index.php',
+    'REQUEST_TIME_FLOAT' => 1556645939.6734540462493896484375,
+    'REQUEST_TIME' => 1556645939,
+    'argv' => [],
+    'argc' => 0,
+]
+[01-May-2019 01:42:40 Asia/Kuala_Lumpur] An Error occurred while handling another error:
+exception 'yii\web\HeadersAlreadySentException' with message 'Headers already sent in /home/mybuildi/igotour.services/common/modules/api/controllers/MobileController.php on line 124.' in /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/ErrorHandler.php(135): yii\web\Response->send()
+#2 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\web\HeadersAlreadySentException))
+#3 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\HeadersAlreadySentException))
+#4 {main}
+Previous exception:
+exception 'yii\web\HeadersAlreadySentException' with message 'Headers already sent in /home/mybuildi/igotour.services/common/modules/api/controllers/MobileController.php on line 124.' in /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/base/Application.php(392): yii\web\Response->send()
+#2 /home/mybuildi/igotour.services/frontend/web/index.php(17): yii\base\Application->run()
+#3 {main}
+$_SERVER = [
+    'CONTENT_LENGTH' => '141',
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundarytv8BNHZEAIuoWXoF',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/mybuildi/igotour.services/frontend/web',
+    'CONTEXT_PREFIX' => '',
+    'DOCUMENT_ROOT' => '/home/mybuildi/igotour.services/frontend/web',
+    'GATEWAY_INTERFACE' => 'CGI/1.1',
+    'H2PUSH' => 'on',
+    'H2_PUSH' => 'on',
+    'H2_PUSHED' => '',
+    'H2_PUSHED_ON' => '',
+    'H2_STREAM_ID' => '1',
+    'H2_STREAM_TAG' => '779-1',
+    'HTTP2' => 'on',
+    'HTTPS' => 'on',
+    'HTTP_ACCEPT' => '*/*',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,ms;q=0.8,id;q=0.7,la;q=0.6',
+    'HTTP_CACHE_CONTROL' => 'no-cache',
+    'HTTP_HOST' => 'igotour.services',
+    'HTTP_ORIGIN' => 'chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop',
+    'HTTP_POSTMAN_TOKEN' => 'dcb2a13f-cf66-b17a-41a5-8b2ce6def7fe',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36',
+    'HTTP_X_HTTPS' => '1',
+    'PATH' => '/bin:/usr/bin',
+    'QUERY_STRING' => '',
+    'REDIRECT_H2PUSH' => 'on',
+    'REDIRECT_H2_PUSH' => 'on',
+    'REDIRECT_H2_PUSHED' => '',
+    'REDIRECT_H2_PUSHED_ON' => '',
+    'REDIRECT_H2_STREAM_ID' => '1',
+    'REDIRECT_H2_STREAM_TAG' => '779-1',
+    'REDIRECT_HTTP2' => 'on',
+    'REDIRECT_HTTPS' => 'on',
+    'REDIRECT_SCRIPT_URI' => 'https://igotour.services/api/mobile/find-services',
+    'REDIRECT_SCRIPT_URL' => '/api/mobile/find-services',
+    'REDIRECT_SSL_TLS_SNI' => 'igotour.services',
+    'REDIRECT_STATUS' => '200',
+    'REDIRECT_UNIQUE_ID' => 'XMiJEGwqMHCC9dceaZJeuAAAAAE',
+    'REDIRECT_URL' => '/api/mobile/find-services',
+    'REMOTE_ADDR' => '175.136.202.249',
+    'REMOTE_PORT' => '61420',
+    'REQUEST_METHOD' => 'POST',
+    'REQUEST_SCHEME' => 'https',
+    'REQUEST_URI' => '/api/mobile/find-services',
+    'SCRIPT_FILENAME' => '/home/mybuildi/igotour.services/frontend/web/index.php',
+    'SCRIPT_NAME' => '/index.php',
+    'SCRIPT_URI' => 'https://igotour.services/api/mobile/find-services',
+    'SCRIPT_URL' => '/api/mobile/find-services',
+    'SERVER_ADDR' => '103.6.198.224',
+    'SERVER_ADMIN' => 'webmaster@igotour.mybuildingsmart.org.my',
+    'SERVER_NAME' => 'igotour.services',
+    'SERVER_PORT' => '443',
+    'SERVER_PROTOCOL' => 'HTTP/2.0',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SSL_TLS_SNI' => 'igotour.services',
+    'UNIQUE_ID' => 'XMiJEGwqMHCC9dceaZJeuAAAAAE',
+    'PHP_SELF' => '/index.php',
+    'REQUEST_TIME_FLOAT' => 1556646160.729384899139404296875,
+    'REQUEST_TIME' => 1556646160,
+    'argv' => [],
+    'argc' => 0,
+]
+[01-May-2019 01:46:43 Asia/Kuala_Lumpur] PHP Fatal error:  Class 'common\modules\api\controllers\Templates' not found in /home/mybuildi/igotour.services/common/modules/api/controllers/MobileController.php on line 121
+[12-May-2019 10:40:26 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected '?' in /home/mybuildi/igotour.services/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMessage.php on line 490
+[12-May-2019 10:43:14 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected '?' in /home/mybuildi/igotour.services/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMessage.php on line 490
+[12-May-2019 11:17:58 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected '?' in /home/mybuildi/igotour.services/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMessage.php on line 490
+[12-May-2019 11:47:25 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected '?' in /home/mybuildi/igotour.services/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMessage.php on line 490
+[12-May-2019 12:17:47 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected '?' in /home/mybuildi/igotour.services/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMessage.php on line 490
+[19-May-2019 01:40:14 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected '?' in /home/mybuildi/igotour.services/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMessage.php on line 490
+[19-May-2019 01:44:30 Asia/Kuala_Lumpur] PHP Fatal error:  Call to a member function saveAs() on null in /home/mybuildi/igotour.services/frontend/controllers/ProfileController.php on line 228
+[19-May-2019 01:48:35 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected '?' in /home/mybuildi/igotour.services/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMessage.php on line 490
+[19-May-2019 01:51:55 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected '?' in /home/mybuildi/igotour.services/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMimeEntity.php on line 301
+[19-May-2019 01:52:12 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected '?' in /home/mybuildi/igotour.services/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMessage.php on line 490
+[19-May-2019 10:51:41 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected '?' in /home/mybuildi/igotour.services/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMessage.php on line 490
+[19-May-2019 10:53:01 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected '?' in /home/mybuildi/igotour.services/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMessage.php on line 490
+[19-May-2019 10:53:16 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected '?' in /home/mybuildi/igotour.services/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMessage.php on line 490
+[19-May-2019 10:54:08 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected '?' in /home/mybuildi/igotour.services/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMessage.php on line 490
+[19-May-2019 10:54:23 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected '?' in /home/mybuildi/igotour.services/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMessage.php on line 490
+[19-May-2019 10:56:53 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected '?' in /home/mybuildi/igotour.services/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMessage.php on line 490
+[19-May-2019 18:05:10 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected '}' in /home/mybuildi/igotour.services/frontend/controllers/ProfileController.php on line 627
+[21-May-2019 11:11:42 Asia/Kuala_Lumpur] PHP Parse error:  syntax error, unexpected '?' in /home/mybuildi/igotour.services/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mime/SimpleMessage.php on line 490
+[21-May-2019 11:13:19 Asia/Kuala_Lumpur] PHP Fatal error:  Call to undefined function frontend\controllers\php_info() in /home/mybuildi/igotour.services/frontend/controllers/SiteController.php on line 300
+[21-May-2019 11:13:38 Asia/Kuala_Lumpur] An Error occurred while handling another error:
+exception 'yii\web\HeadersAlreadySentException' with message 'Headers already sent in /home/mybuildi/igotour.services/frontend/controllers/SiteController.php on line 300.' in /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/ErrorHandler.php(135): yii\web\Response->send()
+#2 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\web\HeadersAlreadySentException))
+#3 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\HeadersAlreadySentException))
+#4 {main}
+Previous exception:
+exception 'yii\web\HeadersAlreadySentException' with message 'Headers already sent in /home/mybuildi/igotour.services/frontend/controllers/SiteController.php on line 300.' in /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/mybuildi/igotour.services/vendor/yiisoft/yii2/base/Application.php(392): yii\web\Response->send()
+#2 /home/mybuildi/igotour.services/frontend/web/index.php(17): yii\base\Application->run()
+#3 {main}
+$_SERVER = [
+    'CONTEXT_DOCUMENT_ROOT' => '/home/mybuildi/igotour.services/frontend/web',
+    'CONTEXT_PREFIX' => '',
+    'DOCUMENT_ROOT' => '/home/mybuildi/igotour.services/frontend/web',
+    'GATEWAY_INTERFACE' => 'CGI/1.1',
+    'H2PUSH' => 'on',
+    'H2_PUSH' => 'on',
+    'H2_PUSHED' => '',
+    'H2_PUSHED_ON' => '',
+    'H2_STREAM_ID' => '1',
+    'H2_STREAM_TAG' => '210-1',
+    'HTTP2' => 'on',
+    'HTTPS' => 'on',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,ms;q=0.8,id;q=0.7',
+    'HTTP_CACHE_CONTROL' => 'max-age=0',
+    'HTTP_COOKIE' => 'advanced-frontend=8ce4rjh7cd6ko0bfumvst3b7j5; _csrf-frontend=b236690419cbaa89d748b2a93b107f123ebc0feb8c5415d87c6013ff1e4f2fe3a%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%22aAzCdzr0_4ad0CDSYFKelweoukqvWQ8m%22%3B%7D',
+    'HTTP_HOST' => 'www.igotour.services',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.157 Safari/537.36',
+    'HTTP_X_HTTPS' => '1',
+    'PATH' => '/bin:/usr/bin',
+    'QUERY_STRING' => '',
+    'REDIRECT_H2PUSH' => 'on',
+    'REDIRECT_H2_PUSH' => 'on',
+    'REDIRECT_H2_PUSHED' => '',
+    'REDIRECT_H2_PUSHED_ON' => '',
+    'REDIRECT_H2_STREAM_ID' => '1',
+    'REDIRECT_H2_STREAM_TAG' => '210-1',
+    'REDIRECT_HTTP2' => 'on',
+    'REDIRECT_HTTPS' => 'on',
+    'REDIRECT_SCRIPT_URI' => 'https://www.igotour.services/site/php',
+    'REDIRECT_SCRIPT_URL' => '/site/php',
+    'REDIRECT_SSL_TLS_SNI' => 'www.igotour.services',
+    'REDIRECT_STATUS' => '200',
+    'REDIRECT_UNIQUE_ID' => 'XONs4r3KASnW7q-xEPsWOQAAAAE',
+    'REDIRECT_URL' => '/site/php',
+    'REMOTE_ADDR' => '124.13.236.4',
+    'REMOTE_PORT' => '65422',
+    'REQUEST_METHOD' => 'GET',
+    'REQUEST_SCHEME' => 'https',
+    'REQUEST_URI' => '/site/php',
+    'SCRIPT_FILENAME' => '/home/mybuildi/igotour.services/frontend/web/index.php',
+    'SCRIPT_NAME' => '/index.php',
+    'SCRIPT_URI' => 'https://www.igotour.services/site/php',
+    'SCRIPT_URL' => '/site/php',
+    'SERVER_ADDR' => '103.6.198.224',
+    'SERVER_ADMIN' => 'webmaster@igotour.mybuildingsmart.org.my',
+    'SERVER_NAME' => 'www.igotour.services',
+    'SERVER_PORT' => '443',
+    'SERVER_PROTOCOL' => 'HTTP/2.0',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SSL_TLS_SNI' => 'www.igotour.services',
+    'UNIQUE_ID' => 'XONs4r3KASnW7q-xEPsWOQAAAAE',
+    'PHP_SELF' => '/index.php',
+    'REQUEST_TIME_FLOAT' => 1558408418.29741191864013671875,
+    'REQUEST_TIME' => 1558408418,
+    'argv' => [],
+    'argc' => 0,
+]
+[21-May-2019 12:43:00 Asia/Kuala_Lumpur] PHP Warning:  POST Content-Length of 28640557 bytes exceeds the limit of 8388608 bytes in Unknown on line 0
