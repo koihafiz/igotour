@@ -14,19 +14,23 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'user_id')->textInput() ?>
 
+    <?= $form->field($model, 'buddy_id')->textInput() ?>
+
     <?= $form->field($model, 'service_id')->textInput() ?>
 
     <?= $form->field($model, 'service_title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'total_hour')->textInput() ?>
+    <?= $form->field($model, 'duration')->textInput() ?>
+
+    <?= $form->field($model, 'charge')->textInput() ?>
 
     <?= $form->field($model, 'date')->textInput() ?>
 
-    <?= $form->field($model, 'time_from')->textInput() ?>
+    <?= $form->field($model, 'start_time')->textInput() ?>
 
-    <?= $form->field($model, 'time_to')->textInput() ?>
+    <?= $form->field($model, 'end_time')->textInput() ?>
 
-    <?= $form->field($model, 'charge')->textInput() ?>
+    <?= $form->field($model, 'status')->textInput() ?>
 
     <?= $form->field($model, 'created_at')->textInput() ?>
 

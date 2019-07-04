@@ -17,9 +17,9 @@ class CartSearch extends Cart
     public function rules()
     {
         return [
-            [['id', 'user_id', 'service_id', 'total_hour', 'date', 'time_from', 'time_to', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'user_id', 'buddy_id', 'service_id', 'date', 'start_time', 'end_time', 'status', 'created_at', 'updated_at'], 'integer'],
             [['service_title'], 'safe'],
-            [['charge'], 'number'],
+            [['duration', 'charge'], 'number'],
         ];
     }
 
@@ -61,12 +61,14 @@ class CartSearch extends Cart
         $query->andFilterWhere([
             'id' => $this->id,
             'user_id' => $this->user_id,
+            'buddy_id' => $this->buddy_id,
             'service_id' => $this->service_id,
-            'total_hour' => $this->total_hour,
-            'date' => $this->date,
-            'time_from' => $this->time_from,
-            'time_to' => $this->time_to,
+            'duration' => $this->duration,
             'charge' => $this->charge,
+            'date' => $this->date,
+            'start_time' => $this->start_time,
+            'end_time' => $this->end_time,
+            'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);

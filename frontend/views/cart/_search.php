@@ -19,19 +19,23 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'user_id') ?>
 
+    <?= $form->field($model, 'buddy_id') ?>
+
     <?= $form->field($model, 'service_id') ?>
 
     <?= $form->field($model, 'service_title') ?>
 
-    <?= $form->field($model, 'total_hour') ?>
+    <?php // echo $form->field($model, 'duration') ?>
+
+    <?php // echo $form->field($model, 'charge') ?>
 
     <?php // echo $form->field($model, 'date') ?>
 
-    <?php // echo $form->field($model, 'time_from') ?>
+    <?php // echo $form->field($model, 'start_time') ?>
 
-    <?php // echo $form->field($model, 'time_to') ?>
+    <?php // echo $form->field($model, 'end_time') ?>
 
-    <?php // echo $form->field($model, 'charge') ?>
+    <?php // echo $form->field($model, 'status') ?>
 
     <?php // echo $form->field($model, 'created_at') ?>
 
