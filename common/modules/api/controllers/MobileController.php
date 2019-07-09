@@ -156,6 +156,8 @@ class MobileController extends Controller
         $model->user_id = $data['user_id'];
         $model->service_id = $data['service_id'];
         $model->service_title = $data['service_title'];
+        $model->country_id = $data['country_id'];
+        $model->state_id = $data['state_id'];
         $model->duration = $data['duration'];
         $model->charge = $data['charge'];
         $model->date = $data['date'];

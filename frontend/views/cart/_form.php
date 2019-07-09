@@ -20,6 +20,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'service_title')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'country_id')->textInput() ?>
+
+    <?= $form->field($model, 'state_id')->textInput() ?>
+
     <?= $form->field($model, 'duration')->textInput() ?>
 
     <?= $form->field($model, 'charge')->textInput() ?>

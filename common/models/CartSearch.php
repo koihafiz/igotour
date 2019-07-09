@@ -17,7 +17,7 @@ class CartSearch extends Cart
     public function rules()
     {
         return [
-            [['id', 'user_id', 'buddy_id', 'service_id', 'date', 'start_time', 'end_time', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'user_id', 'buddy_id', 'service_id', 'country_id', 'state_id', 'date', 'start_time', 'end_time', 'status', 'created_at', 'updated_at'], 'integer'],
             [['service_title'], 'safe'],
             [['duration', 'charge'], 'number'],
         ];
@@ -63,6 +63,8 @@ class CartSearch extends Cart
             'user_id' => $this->user_id,
             'buddy_id' => $this->buddy_id,
             'service_id' => $this->service_id,
+            'country_id' => $this->country_id,
+            'state_id' => $this->state_id,
             'duration' => $this->duration,
             'charge' => $this->charge,
             'date' => $this->date,

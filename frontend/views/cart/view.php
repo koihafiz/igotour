@@ -34,6 +34,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'buddy_id',
             'service_id',
             'service_title',
+            'country_id',
+            'state_id',
             'duration',
             'charge',
             'date',

@@ -25,6 +25,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'service_title') ?>
 
+    <?php // echo $form->field($model, 'country_id') ?>
+
+    <?php // echo $form->field($model, 'state_id') ?>
+
     <?php // echo $form->field($model, 'duration') ?>
 
     <?php // echo $form->field($model, 'charge') ?>
