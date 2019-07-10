@@ -177,10 +177,20 @@ class MobileController extends Controller
 
         Yii::$app->response->format = Response::FORMAT_JSON;
 
-        $model = Cart::find()->where(['user_id' => $data['user_id'],'status' => 0])->all();
+        $user_id = $data['user_id'];
 
-        if($model !== null)
-            return ['cart' => $model];
+        $sql = "SELECT a.*,b.name as cname,c.name as sname FROM cart a, country b, state c WHERE a.`country_id` = b.`id` AND a.`state_id` = c.`id` AND a.user_id = $user_id AND a.status = 0";
+
+        $model = Yii::$app->db->createCommand($sql);
+        $cartData = $model->queryAll();
+
+        return ['cart' => $cartData];
+
+
+//        $model = Cart::find()->where(['user_id' => $data['user_id'],'status' => 0])->all();
+
+//        if($model !== null)
+//            return ['cart' => $model];
     }
 
     public function actionGoToBillplz($name=null,$email=null,$phone=0111111111,$user_id=null,$price=0,$service)
