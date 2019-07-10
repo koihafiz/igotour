@@ -193,6 +193,18 @@ class MobileController extends Controller
 //            return ['cart' => $model];
     }
 
+    public function actionRemoveSelectedCart($id)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $model = Cart::findOne($id);
+
+        if($model->delete())
+            return ['status' => true];
+        else
+            return ['status' => false];
+    }
+
     public function actionGoToBillplz($name=null,$email=null,$phone=0111111111,$user_id=null,$price=0,$service)
     {
         if($name != null && $email != null && $user_id != null && $price > 0)
