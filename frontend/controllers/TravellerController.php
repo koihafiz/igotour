@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\User;
 use Yii;
 use yii\web\Controller;
 
@@ -12,17 +13,20 @@ class TravellerController extends Controller
         return $this->render('index');
     }
 
-    public function actionPaymentBillplz($name=null,$email=null,$phone=0111111111,$user_id=null,$price=0,$service)
+    public function actionPaymentBillplz($user_id,$price=0)
     {
-        if($name != null && $email != null && $user_id != null && $price > 0)
+        $user = User::findOne($user_id);
+
+        if($user !== null && $price > 0)
         {
-            $mobile = $phone;
+
+
+            $mobile = $user->phone ? $user->phone : '0111111111';
             $amount = $price * 100;
-            //$amount = 200;
-            $reference_1_label = 'Service';
-            $reference_1 = $service;
-            $reference_2_label = 'EMAIL'; //No KP
-            $reference_2 = $email; //No KP
+            $reference_1_label = 'TRAVELLER NAME';
+            $reference_1 = $user->username;
+            $reference_2_label = 'TRAVELLER EMAIL';
+            $reference_2 = $user->email;
             $description = 'PAYMENT FOR IGO TOUR SERVICE';
             $callback_url = 'https://igotour.services/';
             $redirect_url = 'https://igotour.services/';
@@ -48,14 +52,14 @@ class TravellerController extends Controller
 
             $values = array(
                 'collection_id' => $collection_id,
-                'name' => $name,
-                'email' => $email,
+                'name' => $user->username,
+                'email' => $user->email,
                 'mobile' => $mobile,
                 'amount' => $amount,
                 'reference_1_label' => $reference_1_label,
                 'reference_1' => $reference_1,
-                // 'reference_2_label' => $reference_2_label,
-                // 'reference_2' => $reference_2,
+                 'reference_2_label' => $reference_2_label,
+                 'reference_2' => $reference_2,
                 'description' => $description,
                 'callback_url' => $callback_url,
                 'redirect_url' => $redirect_url

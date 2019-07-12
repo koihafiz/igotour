@@ -3,7 +3,6 @@
 namespace common\models;
 
 use Yii;
-use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "cart".
@@ -15,6 +14,8 @@ use yii\behaviors\TimestampBehavior;
  * @property string $service_title
  * @property int $country_id
  * @property int $state_id
+ * @property int $pax
+ * @property string $pickup_location
  * @property double $duration
  * @property double $charge
  * @property int $date
@@ -34,13 +35,6 @@ class Cart extends \yii\db\ActiveRecord
         return 'cart';
     }
 
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::className(),
-        ];
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -48,9 +42,10 @@ class Cart extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'service_id', 'country_id', 'state_id', 'duration', 'charge', 'date', 'start_time', 'end_time'], 'required'],
-            [['user_id', 'buddy_id', 'service_id', 'country_id', 'state_id', 'date', 'start_time', 'end_time', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['user_id', 'buddy_id', 'service_id', 'country_id', 'state_id', 'pax', 'date', 'start_time', 'end_time', 'status', 'created_at', 'updated_at'], 'integer'],
             [['duration', 'charge'], 'number'],
             [['service_title'], 'string', 'max' => 123],
+            [['pickup_location'], 'string', 'max' => 321],
         ];
     }
 
@@ -67,6 +62,8 @@ class Cart extends \yii\db\ActiveRecord
             'service_title' => Yii::t('app', 'Service Title'),
             'country_id' => Yii::t('app', 'Country ID'),
             'state_id' => Yii::t('app', 'State ID'),
+            'pax' => Yii::t('app', 'Pax'),
+            'pickup_location' => Yii::t('app', 'Pickup Location'),
             'duration' => Yii::t('app', 'Duration'),
             'charge' => Yii::t('app', 'Charge'),
             'date' => Yii::t('app', 'Date'),

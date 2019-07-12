@@ -24,6 +24,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'state_id')->textInput() ?>
 
+    <?= $form->field($model, 'pax')->textInput() ?>
+
+    <?= $form->field($model, 'pickup_location')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'duration')->textInput() ?>
 
     <?= $form->field($model, 'charge')->textInput() ?>

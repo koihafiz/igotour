@@ -29,6 +29,10 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'state_id') ?>
 
+    <?php // echo $form->field($model, 'pax') ?>
+
+    <?php // echo $form->field($model, 'pickup_location') ?>
+
     <?php // echo $form->field($model, 'duration') ?>
 
     <?php // echo $form->field($model, 'charge') ?>

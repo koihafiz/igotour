@@ -17,8 +17,8 @@ class CartSearch extends Cart
     public function rules()
     {
         return [
-            [['id', 'user_id', 'buddy_id', 'service_id', 'country_id', 'state_id', 'date', 'start_time', 'end_time', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['service_title'], 'safe'],
+            [['id', 'user_id', 'buddy_id', 'service_id', 'country_id', 'state_id', 'pax', 'date', 'start_time', 'end_time', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['service_title', 'pickup_location'], 'safe'],
             [['duration', 'charge'], 'number'],
         ];
     }
@@ -65,6 +65,7 @@ class CartSearch extends Cart
             'service_id' => $this->service_id,
             'country_id' => $this->country_id,
             'state_id' => $this->state_id,
+            'pax' => $this->pax,
             'duration' => $this->duration,
             'charge' => $this->charge,
             'date' => $this->date,
@@ -75,7 +76,8 @@ class CartSearch extends Cart
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'service_title', $this->service_title]);
+        $query->andFilterWhere(['like', 'service_title', $this->service_title])
+            ->andFilterWhere(['like', 'pickup_location', $this->pickup_location]);
 
         return $dataProvider;
     }

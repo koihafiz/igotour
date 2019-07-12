@@ -32,6 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'service_title',
             //'country_id',
             //'state_id',
+            //'pax',
+            //'pickup_location',
             //'duration',
             //'charge',
             //'date',
