@@ -94,6 +94,7 @@ class MobileController extends Controller
         $email = $data['email'];
         $phone = $data['phone'];
         $password = $data['password'];
+        $user_status = $data['user_status'];
 
         $model = new SignupForm();
 
@@ -102,7 +103,8 @@ class MobileController extends Controller
         $model->phone = $phone;
         $model->password = $password;
         $model->password_repeat = $password;
-        // $model->reference_code = 'NRC001';
+        $model->user_status = $user_status;
+        $model->reference_code = '';
 
         if($model->signup())
         {
@@ -164,6 +166,8 @@ class MobileController extends Controller
         $model->start_time = $data['start_time'];
         $model->end_time = $data['end_time'];
         $model->status = $data['status'];
+        $model->pax = $data['pax'];
+        $model->pickup_location = $data['pickup'];
 
         if($model->save())
             return ['status' => true, 'order_id' => $model->id];
@@ -205,7 +209,7 @@ class MobileController extends Controller
             return ['status' => false];
     }
 
-    public function actionGoToBillplz($user_id=null,$price=0)
+    public function actionGoToBillplz($user_id=null,$price=0,$ref)
     {
         $user = User::findOne($user_id);
 
@@ -213,13 +217,13 @@ class MobileController extends Controller
         {
             $mobile = $user->phone ? $user->phone : '0111111111';
             $amount = $price * 100;
-            $reference_1_label = 'TRAVELLER NAME';
-            $reference_1 = $user->username;
+            $reference_1_label = 'User_ref';
+            $reference_1 = $user_id.'-'.$ref;
             $reference_2_label = 'TRAVELLER EMAIL';
             $reference_2 = $user->email;
             $description = 'PAYMENT FOR IGO TOUR SERVICE';
-            $callback_url = 'https://igotour.services/';
-            $redirect_url = 'https://igotour.services/';
+            $callback_url = 'https://igotour.services/traveller';
+            $redirect_url = 'https://igotour.services/traveller';
 
             date_default_timezone_set('Asia/Kuala_Lumpur');
 
@@ -242,14 +246,14 @@ class MobileController extends Controller
 
             $values = array(
                 'collection_id' => $collection_id,
-                'name' => $reference_1,
-                'email' => $reference_2,
+                'name' => $user->username,
+                'email' => $user->email,
                 'mobile' => $mobile,
                 'amount' => $amount,
                 'reference_1_label' => $reference_1_label,
                 'reference_1' => $reference_1,
-                'reference_2_label' => $reference_2_label,
-                'reference_2' => $reference_2,
+//                'reference_2_label' => $reference_2_label,
+//                'reference_2' => $reference_2,
                 'description' => $description,
                 'callback_url' => $callback_url,
                 'redirect_url' => $redirect_url

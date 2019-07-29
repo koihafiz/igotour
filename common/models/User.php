@@ -16,7 +16,9 @@ use yii\web\IdentityInterface;
  * @property string $password_reset_token
  * @property string $email
  * @property string $auth_key
+ * @property string $ic_passport
  * @property integer $status
+ * @property integer $user_status
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
@@ -30,7 +32,9 @@ class User extends ActiveRecord implements IdentityInterface
     const ADMINISTRATOR = 11;
     const MASTERBUDDY = 1;
     const SUBMASTERBUDDY = 2;
-    const NOBUDDY = 0;
+    const REFERENCELINK = 3;
+    const NOBUDDY = 4;
+    const TRAVELLER = 22;
 
     /**
      * {@inheritdoc}
