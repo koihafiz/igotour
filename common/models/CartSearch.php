@@ -20,6 +20,7 @@ class CartSearch extends Cart
             [['id', 'user_id', 'buddy_id', 'service_id', 'country_id', 'state_id', 'pax', 'date', 'start_time', 'end_time', 'status', 'created_at', 'updated_at'], 'integer'],
             [['service_title', 'pickup_location'], 'safe'],
             [['duration', 'charge'], 'number'],
+            [['payment_id'], 'string'],
         ];
     }
 
@@ -62,6 +63,7 @@ class CartSearch extends Cart
             'id' => $this->id,
             'user_id' => $this->user_id,
             'buddy_id' => $this->buddy_id,
+            'payment_id' => $this->payment_id,
             'service_id' => $this->service_id,
             'country_id' => $this->country_id,
             'state_id' => $this->state_id,

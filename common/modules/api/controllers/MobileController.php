@@ -374,12 +374,9 @@ class MobileController extends Controller
         $signed= hash_hmac('sha256', $c_signing, Yii::$app->params['x_signature']);
         if ($signed === $data['x_signature']) {
 //            echo 'Match!';
-//            $this->actionRequestBuddy($data['id']);
 
             $findCartIds = Payment::find()->where(['payment_id' => $data['id']])->one();
             $user = User::findOne($findCartIds->user_id);
-//            $findCartIds->payment_id = 'try to change la';
-//            $findCartIds->save();
 
             if($findCartIds)
             {
@@ -413,10 +410,12 @@ class MobileController extends Controller
 
                     }
 
+                    $cart->payment_id = $data['id'];
                     $cart->status = 1;
                     $cart->save();
                 }
                 $findCartIds->status = 1;
+                $findCartIds->amount = $data['amount'];
                 $findCartIds->save();
             }
 

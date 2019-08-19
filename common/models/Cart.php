@@ -11,6 +11,7 @@ use yii\behaviors\TimestampBehavior;
  * @property int $id
  * @property int $user_id
  * @property int $buddy_id
+ * @property string $payment_id
  * @property int $service_id
  * @property string $service_title
  * @property int $country_id
@@ -52,6 +53,7 @@ class Cart extends \yii\db\ActiveRecord
             [['user_id', 'service_id', 'country_id', 'state_id', 'duration', 'charge', 'date', 'start_time', 'end_time'], 'required'],
             [['user_id', 'buddy_id', 'service_id', 'country_id', 'state_id', 'pax', 'date', 'start_time', 'end_time', 'status', 'created_at', 'updated_at'], 'integer'],
             [['duration', 'charge'], 'number'],
+            [['payment_id'], 'string', 'max' => 17],
             [['service_title'], 'string', 'max' => 123],
             [['pickup_location'], 'string', 'max' => 321],
         ];
@@ -66,6 +68,7 @@ class Cart extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'user_id' => Yii::t('app', 'User ID'),
             'buddy_id' => Yii::t('app', 'Buddy ID'),
+            'payment_id' => Yii::t('app', 'Payment ID'),
             'service_id' => Yii::t('app', 'Service ID'),
             'service_title' => Yii::t('app', 'Service Title'),
             'country_id' => Yii::t('app', 'Country ID'),
