@@ -22,12 +22,8 @@ class TravellerController extends Controller
 
     public function actionRedirect()
     {
-        $get = Yii::$app->request;
-
         $r_signing = '';
 
-//        if($_GET['billplz'])
-//        {
             $data = [
                 'id' =>  $_GET['billplz']['id'],
                 'paid_at' => $_GET['billplz']['paid_at'] ,
@@ -47,57 +43,10 @@ class TravellerController extends Controller
             $signed= hash_hmac('sha256', $r_signing, Yii::$app->params['x_signature']);
             if ($signed === $data['x_signature']) {
 //                echo 'Match!';
-
-            $findCartIds = Payment::find()->where(['payment_id' => $data['id']])->one();
-            $user = User::findOne($findCartIds->user_id);
-
-            if($findCartIds)
-            {
-                $cartId = explode(",",$findCartIds->cart_id);
-                foreach($cartId as $id)
-                {
-                    $cart = Cart::findOne($id);
-
-                    $buddies = StateService::find()->where(['state_id'=>$cart->state_id,'service_id'=>$cart->service_id])->all();
-                    foreach($buddies as $buddy)
-                    {
-                        $modelBuddy = User::findOne($buddy['user_id']);
-
-                        $this->buddyIDs[] = $modelBuddy->id;
-
-                        Yii::$app->mailer
-                            ->compose(
-                                ['html' => 'inviteBudy-html'],
-                                ['username' => $modelBuddy->username,'cart' => $cart,'user' => $user]
-                            )
-                            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
-                            ->setTo($modelBuddy->email)
-                            ->setSubject('Guide Invitation for Service ' . $cart->service_title)
-                            ->send();
-
-                        $model = new Buddy();
-                        $model->buddy_id = $buddy['user_id'];
-                        $model->cart_id = $id;
-                        $model->status = 0;
-                        $model->save();
-
-                    }
-
-                    $cart->status = 1;
-                    $cart->save();
-                }
-                $findCartIds->status = 1;
-                $findCartIds->save();
-            }
-
-
                 return $this->render('redirect',['data' => $data]);
             } else {
                 echo 'Not Match!';
             }
-
-//        }
-
 
     }
     public function actionCallback()

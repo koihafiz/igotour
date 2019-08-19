@@ -12,7 +12,9 @@ use yii\behaviors\TimestampBehavior;
  * @property string $payment_id
  * @property int $user_id
  * @property string $cart_id
+ * @property string $buddy_id
  * @property int $status
+ * @property double $amount
  * @property int $created_at
  * @property int $updated_at
  */
@@ -41,8 +43,9 @@ class Payment extends \yii\db\ActiveRecord
         return [
             [['user_id'], 'required'],
             [['user_id', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['amount'], 'number'],
             [['payment_id'], 'string', 'max' => 17],
-            [['cart_id'], 'string', 'max' => 123],
+            [['cart_id', 'buddy_id'], 'string', 'max' => 123],
             [['payment_id'], 'unique'],
         ];
     }
@@ -57,7 +60,9 @@ class Payment extends \yii\db\ActiveRecord
             'payment_id' => Yii::t('app', 'Payment ID'),
             'user_id' => Yii::t('app', 'User ID'),
             'cart_id' => Yii::t('app', 'Cart ID'),
+            'buddy_id' => Yii::t('app', 'Buddy ID'),
             'status' => Yii::t('app', 'Status'),
+            'amount' => Yii::t('app', 'Amount'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
