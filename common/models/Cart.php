@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "cart".
@@ -33,6 +34,13 @@ class Cart extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'cart';
+    }
+
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
     }
 
     /**
@@ -73,6 +81,19 @@ class Cart extends \yii\db\ActiveRecord
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
+    }
+
+    public function getState()
+    {
+        return $this->hasOne(State::className(), ['id' => 'state_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCountry()
+    {
+        return $this->hasOne(Country::className(), ['id' => 'country_id']);
     }
 
     /**

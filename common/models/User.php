@@ -102,6 +102,12 @@ class User extends ActiveRecord implements IdentityInterface
         return static::findOne(['email' => $email, 'status' => self::STATUS_ACTIVE, 'user_status'=>11]);
     }
 
+    public static function buddyLoginFindByEmail($email)
+    {
+        $sql = 'SELECT * FROM user WHERE email = "'.$email.'" AND status = '.self::STATUS_ACTIVE.' AND (user_status = 1 OR user_status = 2 OR user_status = 3 OR user_status = 4)';
+        return static::findBySql($sql)->one();
+    }
+
     /**
      * Finds user by password reset token
      *

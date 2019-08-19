@@ -2,98 +2,233 @@
 
 namespace frontend\controllers;
 
+use common\models\Buddy;
+use common\models\StateService;
 use common\models\User;
+use common\models\Cart;
+use common\models\Payment;
 use Yii;
 use yii\web\Controller;
 
 class TravellerController extends Controller
 {
+    public $signing = '';
+    public $buddyIDs = [];
+
     public function actionIndex()
     {
         return $this->render('index');
     }
 
-    public function actionPaymentBillplz($user_id,$price=0)
+    public function actionRedirect()
     {
-        $user = User::findOne($user_id);
+        $get = Yii::$app->request;
 
-        if($user !== null && $price > 0)
-        {
+        $r_signing = '';
+
+//        if($_GET['billplz'])
+//        {
+            $data = [
+                'id' =>  $_GET['billplz']['id'],
+                'paid_at' => $_GET['billplz']['paid_at'] ,
+                'paid' => $_GET['billplz']['paid'],
+                'x_signature' => $_GET['billplz']['x_signature']
+            ];
+
+            foreach ($data as $key => $value) {
+                $r_signing .= 'billplz'.$key . $value;
+                if ($key === 'paid') {
+                    break;
+                } else {
+                    $r_signing .= '|';
+                }
+            }
+
+            $signed= hash_hmac('sha256', $r_signing, Yii::$app->params['x_signature']);
+            if ($signed === $data['x_signature']) {
+//                echo 'Match!';
+
+            $findCartIds = Payment::find()->where(['payment_id' => $data['id']])->one();
+            $user = User::findOne($findCartIds->user_id);
+
+            if($findCartIds)
+            {
+                $cartId = explode(",",$findCartIds->cart_id);
+                foreach($cartId as $id)
+                {
+                    $cart = Cart::findOne($id);
+
+                    $buddies = StateService::find()->where(['state_id'=>$cart->state_id,'service_id'=>$cart->service_id])->all();
+                    foreach($buddies as $buddy)
+                    {
+                        $modelBuddy = User::findOne($buddy['user_id']);
+
+                        $this->buddyIDs[] = $modelBuddy->id;
+
+                        Yii::$app->mailer
+                            ->compose(
+                                ['html' => 'inviteBudy-html'],
+                                ['username' => $modelBuddy->username,'cart' => $cart,'user' => $user]
+                            )
+                            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
+                            ->setTo($modelBuddy->email)
+                            ->setSubject('Guide Invitation for Service ' . $cart->service_title)
+                            ->send();
+
+                        $model = new Buddy();
+                        $model->buddy_id = $buddy['user_id'];
+                        $model->cart_id = $id;
+                        $model->status = 0;
+                        $model->save();
+
+                    }
+
+                    $cart->status = 1;
+                    $cart->save();
+                }
+                $findCartIds->status = 1;
+                $findCartIds->save();
+            }
 
 
-            $mobile = $user->phone ? $user->phone : '0111111111';
-            $amount = $price * 100;
-            $reference_1_label = 'TRAVELLER NAME';
-            $reference_1 = $user->username;
-            $reference_2_label = 'TRAVELLER EMAIL';
-            $reference_2 = $user->email;
-            $description = 'PAYMENT FOR IGO TOUR SERVICE';
-            $callback_url = 'https://igotour.services/';
-            $redirect_url = 'https://igotour.services/';
-
-//            date_default_timezone_set('Asia/Kuala_Lumpur');
-
-            $billplz_gateway_production = 1; //1: Production 0:Sandbox
-
-            if($billplz_gateway_production == 1){
-                $billplz_api_key = Yii::$app->params['api_secret_key'];
-                $billplz_x_signature = Yii::$app->params['x_signature'];
-                $link = Yii::$app->params['billplz_api_link'];
-                $link_payment = Yii::$app->params['billplz_payment_link'];
-                $collection_id = Yii::$app->params['collection_id'];
+                return $this->render('redirect',['data' => $data]);
             } else {
-                $billplz_api_key = Yii::$app->params['sapi_secret_key'];
-                $billplz_x_signature = Yii::$app->params['sx_signature'];
-                $link = Yii::$app->params['sbillplz_api_link'];
-                $link_payment = Yii::$app->params['sbillplz_payment_link'];
-                $collection_id = Yii::$app->params['scollection_id'];
+                echo 'Not Match!';
             }
 
-
-            $values = array(
-                'collection_id' => $collection_id,
-                'name' => $user->username,
-                'email' => $user->email,
-                'mobile' => $mobile,
-                'amount' => $amount,
-                'reference_1_label' => $reference_1_label,
-                'reference_1' => $reference_1,
-                 'reference_2_label' => $reference_2_label,
-                 'reference_2' => $reference_2,
-                'description' => $description,
-                'callback_url' => $callback_url,
-                'redirect_url' => $redirect_url
-            );
-
-            $params = http_build_query($values);
-
-            //FIRST
-            $ch = curl_init();
-
-            curl_setopt($ch,CURLOPT_USERAGENT, 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/603.1.23 (KHTML, like Gecko) Version/10.0 Mobile/14E5239e Safari/602.1');
-            curl_setopt($ch, CURLOPT_URL, $link);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS,$params);
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_USERPWD, $billplz_api_key . ":" . "");
+//        }
 
 
-            $headers = array();
-            $headers[] = "Content-Type: application/x-www-form-urlencoded";
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    }
+    public function actionCallback()
+    {
+        $data = array(
+            'amount' => $_POST['amount'],
+            'collection_id' =>  $_POST['collection_id'],
+            'due_at' => $_POST['due_at'],
+            'email' =>  $_POST['email'],
+            'id' =>  $_POST['id'],
+            'mobile' =>  $_POST['mobile'],
+            'name' => $_POST['name'],
+            'paid_amount' => $_POST['paid_amount'],
+            'paid_at' =>  $_POST['paid_at'],
+            'paid' => $_POST['paid'],
+            'state' =>  $_POST['state'],
+            'url' => $_POST['url'],
+            'x_signature' => $_POST['x_signature']
+        );
 
-            $result = curl_exec($ch);
-            if (curl_errno($ch)) {
-                echo 'Error:' . curl_error($ch);
+        $c_signing = '';
+
+        foreach ($data as $key => $value) {
+            $c_signing .= $key . $value;
+            if ($key === 'url') {
+                break;
+            } else {
+                $c_signing .= '|';
             }
-            curl_close ($ch);
-
-            $j = json_decode($result, TRUE);
-
-            header('Location: '. $j['url']);
-//            exit;
         }
-        return $this->render('index');
+
+        $signed= hash_hmac('sha256', $c_signing, Yii::$app->params['x_signature']);
+        if ($signed === $data['x_signature']) {
+//            echo 'Match!';
+//            $this->actionRequestBuddy($data['id']);
+
+//            $findCartIds = Payment::find()->where(['payment_id' => $data['id']])->one();
+//            $user = User::findOne($findCartIds->user_id);
+//            $findCartIds->payment_id = 'try to change la';
+//            $findCartIds->save();
+
+//            if($findCartIds)
+//            {
+//                $cartId = explode(",",$findCartIds->cart_id);
+//                foreach($cartId as $id)
+//                {
+//                    $cart = Cart::findOne($id);
+//
+//                    $buddies = StateService::find()->where(['state_id'=>$cart->state_id,'service_id'=>$cart->service_id])->all();
+//                    foreach($buddies as $buddy)
+//                    {
+//                        $modelBuddy = User::findOne($buddy['user_id']);
+//
+//                        $this->buddyIDs[] = $modelBuddy->id;
+//
+//                        Yii::$app->mailer
+//                            ->compose(
+//                                ['html' => 'inviteBudy-html'],
+//                                ['username' => $modelBuddy->username,'cart' => $cart,'user' => $user]
+//                            )
+//                            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
+//                            ->setTo($modelBuddy->email)
+//                            ->setSubject('Guide Invitation for Service ' . $cart->service_title)
+//                            ->send();
+//
+//                        $model = new Buddy();
+//                        $model->buddy_id = $buddy['user_id'];
+//                        $model->cart_id = $id;
+//                        $model->status = 0;
+//                        $model->save();
+//
+//                    }
+//
+//                    $cart->status = 1;
+//                    $cart->save();
+//                }
+//                $findCartIds->status = 1;
+//                $findCartIds->save();
+//            }
+
+
+
+        } else {
+            echo 'Not Match!';
+        }
+    }
+
+    public function actionRequestBuddy($bill_id)
+    {
+        $findCartIds = Payment::find()->where(['payment_id' => $bill_id])->one();
+        $user = User::findOne($findCartIds->user_id);
+
+        if($findCartIds)
+        {
+            $cartId = explode(",",$findCartIds->cart_id);
+            foreach($cartId as $id)
+            {
+                $cart = Cart::findOne($id);
+
+                $buddies = StateService::find()->where(['state_id'=>$cart->state_id,'service_id'=>$cart->service_id])->all();
+                foreach($buddies as $buddy)
+                {
+                    $modelBuddy = User::findOne($buddy['user_id']);
+
+                    $this->buddyIDs[] = $modelBuddy->id;
+
+                    Yii::$app->mailer
+                        ->compose(
+                            ['html' => 'inviteBudy-html'],
+                            ['username' => $modelBuddy->username,'cart' => $cart,'user' => $user]
+                        )
+                        ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
+                        ->setTo($modelBuddy->email)
+                        ->setSubject('Guide Invitation for Service ' . $cart->service_title)
+                        ->send();
+
+                    $model = new Buddy();
+                    $model->buddy_id = $buddy['user_id'];
+                    $model->cart_id = $id;
+                    $model->status = 0;
+                    $model->save();
+
+                }
+
+                $cart->status = 1;
+                $cart->save();
+            }
+            $findCartIds->status = 1;
+            $findCartIds->save();
+        }
+
     }
 
 }

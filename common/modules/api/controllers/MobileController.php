@@ -2,10 +2,13 @@
 
 namespace common\modules\api\controllers;
 
+use common\models\Buddy;
 use common\models\LoginForm;
+use common\models\LoginFormBuddy;
 use common\models\State;
 use frontend\models\SignupForm;
 use common\models\Cart;
+use common\models\Payment;
 use common\models\StateService;
 use yii\filters\Cors;
 use yii\rest\Controller;
@@ -17,6 +20,8 @@ use yii\helpers\Json;
 
 class MobileController extends Controller
 {
+    public $buddyIDs = [];
+
     public function behaviors()
     {
         return [
@@ -59,26 +64,43 @@ class MobileController extends Controller
             }
         }
     }
-
-    public function actionLogoutz($sesId=null)
+    public function actionLoginBuddy()
     {
-//        header('Access-Control-Allow-Origin: *');
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $data = Yii::$app->request->post();
+
+        // 0 = user not exist, 11 = user exist & has logged in, 10 = user exist & cannot logged in
+
+        if(!User::find()->where(['email' => $data['email']])->exists()) {
+            return ['status' => 0];
+        }else {
+            $model = new LoginFormBuddy();
+            $model->email = $data['email'];
+            $model->password = $data['password'];
+
+            if ($model->login()) {
+                return ['status' => 11, 'user_id' => Yii::$app->user->identity->id, 'username'=> Yii::$app->user->identity->username,'email'=> Yii::$app->user->identity->email,'phone'=> Yii::$app->user->identity->phone, 'auth_key'=> Yii::$app->user->identity->auth_key, 'cookie'=>Yii::$app->session->id];
+            }else {
+                return ['status' => 10, 'error' => $model->errors];
+            }
+        }
+    }
+
+    public function actionSignout($sessionId=null)
+    {
+        header('Access-Control-Allow-Origin: *');
 //        $sessionId = Yii::$app->request->get('sessionId');
-
-        // $sessionId_temp = Yii::$app->request->post();
-        // $sessionId = $sessionId_temp['sessionId'];
-
-        if($sesId)
-            $deleteSession = Yii::$app->db->createCommand()->delete('session',"id='".$sesId."'")->execute();
+        if($sessionId != null)
+            $deleteSession = Yii::$app->db->createCommand()->delete('session',"id='".$sessionId."'")->execute();
         else
             $deleteSession = Yii::$app->user->logout();
 
         Yii::$app->response->format = Response::FORMAT_JSON;
 
         if ($deleteSession) {
-            return ['status' => '---'];
+            return ['logout' => 'OK'];
         }else {
-            return ['status' => 'NO, You x login pun cmne nk logout daa'];
+            return ['logout' => 'NO, You x login pun cmne nk logout daa'];
         }
 
     }
@@ -95,6 +117,7 @@ class MobileController extends Controller
         $phone = $data['phone'];
         $password = $data['password'];
         $user_status = $data['user_status'];
+        $ic = $data['ic'];
 
         $model = new SignupForm();
 
@@ -105,6 +128,8 @@ class MobileController extends Controller
         $model->password_repeat = $password;
         $model->user_status = $user_status;
         $model->reference_code = '';
+        $model->ic_passport = $ic;
+        $model->role = 'tr';
 
         if($model->signup())
         {
@@ -209,21 +234,24 @@ class MobileController extends Controller
             return ['status' => false];
     }
 
-    public function actionGoToBillplz($user_id=null,$price=0,$ref)
+    public function actionGoToBillplz($user_id=null,$price=0,$cartId)
     {
         $user = User::findOne($user_id);
 
         if($user_id != null && $price > 0)
         {
+            $payment_id = $user_id.'-'.time();
+
             $mobile = $user->phone ? $user->phone : '0111111111';
             $amount = $price * 100;
-            $reference_1_label = 'User_ref';
-            $reference_1 = $user_id.'-'.$ref;
+            $reference_1_label = 'Payment ID';
+            $reference_1 = $payment_id;
             $reference_2_label = 'TRAVELLER EMAIL';
             $reference_2 = $user->email;
             $description = 'PAYMENT FOR IGO TOUR SERVICE';
-            $callback_url = 'https://igotour.services/traveller';
-            $redirect_url = 'https://igotour.services/traveller';
+//            $callback_url = 'https://igotour.services/traveller/callback';
+            $callback_url = 'https://igotour.services/api/mobile/callback';
+            $redirect_url = 'https://igotour.services/traveller/redirect';
 
             date_default_timezone_set('Asia/Kuala_Lumpur');
 
@@ -250,8 +278,8 @@ class MobileController extends Controller
                 'email' => $user->email,
                 'mobile' => $mobile,
                 'amount' => $amount,
-                'reference_1_label' => $reference_1_label,
-                'reference_1' => $reference_1,
+//                'reference_1_label' => $reference_1_label,
+//                'reference_1' => $reference_1,
 //                'reference_2_label' => $reference_2_label,
 //                'reference_2' => $reference_2,
                 'description' => $description,
@@ -284,8 +312,118 @@ class MobileController extends Controller
 
             $j = json_decode($result, TRUE);
 
+
             header('Location: '. $j['url']);
+
+            $checkPayment = Payment::find()
+                ->where( [ 'user_id' => $user_id, 'cart_id'  => $cartId, 'status' => 0] )
+                ->one();
+
+            if(!$checkPayment)
+            {
+                $payment = new Payment();
+                $payment->payment_id = $j['id'];
+                $payment->user_id = $user_id;
+                $payment->cart_id = $cartId;
+                $payment->status = 0;
+                $payment->save();
+            }else {
+                $checkPayment->payment_id = $j['id'];
+                $checkPayment->save();
+            }
+
+
+//    //    This action should run on success payment - with auto-run
+//            $this->actionRequestBuddy($cartId,$user);
+
             exit;
+        }
+    }
+
+    public function actionCallback()
+    {
+        $buddyIDs = [];
+
+        $data = array(
+            'amount' => $_POST['amount'],
+            'collection_id' =>  $_POST['collection_id'],
+            'due_at' => $_POST['due_at'],
+            'email' =>  $_POST['email'],
+            'id' =>  $_POST['id'],
+            'mobile' =>  $_POST['mobile'],
+            'name' => $_POST['name'],
+            'paid_amount' => $_POST['paid_amount'],
+            'paid_at' =>  $_POST['paid_at'],
+            'paid' => $_POST['paid'],
+            'state' =>  $_POST['state'],
+            'url' => $_POST['url'],
+            'x_signature' => $_POST['x_signature']
+        );
+
+        $c_signing = '';
+
+        foreach ($data as $key => $value) {
+            $c_signing .= $key . $value;
+            if ($key === 'url') {
+                break;
+            } else {
+                $c_signing .= '|';
+            }
+        }
+
+        $signed= hash_hmac('sha256', $c_signing, Yii::$app->params['x_signature']);
+        if ($signed === $data['x_signature']) {
+//            echo 'Match!';
+//            $this->actionRequestBuddy($data['id']);
+
+            $findCartIds = Payment::find()->where(['payment_id' => $data['id']])->one();
+            $user = User::findOne($findCartIds->user_id);
+//            $findCartIds->payment_id = 'try to change la';
+//            $findCartIds->save();
+
+            if($findCartIds)
+            {
+                $cartId = explode(",",$findCartIds->cart_id);
+                foreach($cartId as $id)
+                {
+                    $cart = Cart::findOne($id);
+
+                    $buddies = StateService::find()->where(['state_id'=>$cart->state_id,'service_id'=>$cart->service_id])->all();
+                    foreach($buddies as $buddy)
+                    {
+                        $modelBuddy = User::findOne($buddy['user_id']);
+
+                        $buddyIDs[] = $modelBuddy->id;
+
+                        Yii::$app->mailer
+                            ->compose(
+                                ['html' => 'inviteBudy-html'],
+                                ['username' => $modelBuddy->username,'cart' => $cart,'user' => $user]
+                            )
+                            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
+                            ->setTo($modelBuddy->email)
+                            ->setSubject('Guide Invitation for Service ' . $cart->service_title)
+                            ->send();
+
+                        $model = new Buddy();
+                        $model->buddy_id = $buddy['user_id'];
+                        $model->cart_id = $id;
+                        $model->status = 0;
+                        $model->save();
+
+                    }
+
+                    $cart->status = 1;
+                    $cart->save();
+                }
+                $findCartIds->status = 1;
+                $findCartIds->save();
+            }
+
+
+
+        } else {
+            echo 'Not Match!';
         }
     }
 
