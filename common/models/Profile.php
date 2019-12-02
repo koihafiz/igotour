@@ -89,7 +89,12 @@ class Profile extends \yii\db\ActiveRecord
     public function getUserService()
     {
         return $this->hasMany(UserService::className(),['user_id' => 'user_id']);
-    }  
+    }
+
+    public function getMyCountry()
+    {
+        return $this->hasOne(Country::className(), ['id' => 'country']);
+    }
 
     /**
      * {@inheritdoc}

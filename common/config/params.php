@@ -4,8 +4,8 @@ return [
     'supportEmail' => 'support@igotour.services',
     'user.passwordResetTokenExpire' => 3600,
     'user_status' => [0 => 'Normal User', 1 => 'Master Buddy', 2 => 'Sub Master Buddy', 11 => 'System Admin'],
-    'cart_status' => [0 => 'Just In Basket', 1 => 'Success Payment'],
-    'payment_status' => [0 => 'Pending Payment', 1 => 'Success Payment'],
+    'cart_status' => [0 => 'Just In Basket', 1 => 'Success Payment', 2 => 'Closed'],
+    'payment_status' => [0 => 'Pending Payment', 1 => 'Success Payment', 2 => 'Closed'],
     'buddy_status' => [0 => 'Request Sent', 1 => 'Refuse the Request', 2 => 'Accept the Request', 3 => 'Service Completed'],
 //   ----------------- Billplz Prod -----------------------
     'collection_id' => 'gh6dtokd',

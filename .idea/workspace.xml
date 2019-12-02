@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd576f26-9177-430b-a3f1-afd3f2c680e7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/models/Buddy.php" afterPath="$PROJECT_DIR$/common/models/Buddy.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/models/BuddySearch.php" afterPath="$PROJECT_DIR$/common/models/BuddySearch.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/models/Cart.php" afterPath="$PROJECT_DIR$/common/models/Cart.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/models/CartSearch.php" afterPath="$PROJECT_DIR$/common/models/CartSearch.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/modules/api/controllers/MobileController.php" afterPath="$PROJECT_DIR$/common/modules/api/controllers/MobileController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/models/Profile.php" afterPath="$PROJECT_DIR$/common/models/Profile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/models/User.php" afterPath="$PROJECT_DIR$/common/models/User.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/mail/inviteBudy-html.php" afterPath="$PROJECT_DIR$/common/mail/inviteBudy-html.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/config/params.php" afterPath="$PROJECT_DIR$/common/config/params.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/views/traveller/redirect.php" afterPath="$PROJECT_DIR$/frontend/views/traveller/redirect.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="IgoTour.iws" />
@@ -28,39 +34,74 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MobileController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MobileController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/common/modules/api/controllers/MobileController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.0">
-              <caret line="387" column="47" selection-start-line="0" selection-start-column="0" selection-end-line="438" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.13292433">
+              <caret line="434" column="39" selection-start-line="434" selection-start-column="39" selection-end-line="434" selection-end-column="39" />
               <folding>
                 <element signature="e#50#74#0#PHP" expanded="true" />
-                <element signature="e#500#787#0#PHP" expanded="false" />
-                <element signature="e#793#873#0#PHP" expanded="false" />
-                <element signature="e#879#2056#0#PHP" expanded="false" />
-                <element signature="e#2061#3029#0#PHP" expanded="false" />
-                <element signature="e#3035#3651#0#PHP" expanded="false" />
-                <element signature="e#3657#4584#0#PHP" expanded="false" />
-                <element signature="e#4590#4942#0#PHP" expanded="false" />
-                <element signature="e#4948#5566#0#PHP" expanded="false" />
-                <element signature="e#5572#6497#0#PHP" expanded="false" />
-                <element signature="e#6503#7183#0#PHP" expanded="false" />
-                <element signature="e#7189#7467#0#PHP" expanded="false" />
-                <element signature="e#7473#11510#0#PHP" expanded="false" />
-                <element signature="e#14468#14695#0#PHP" expanded="false" />
-                <marker date="1566224559707" expanded="true" signature="5198:5355" placeholder="SELECT a.*,b..." />
-                <marker date="1566224559707" expanded="true" signature="6702:6848" placeholder="SELECT a.*,b..cart..." />
-                <marker date="1566224559707" expanded="true" signature="6702:6874" placeholder="SELECT a.*,b..cart..." />
+                <element signature="e#600#887#0#PHP" expanded="false" />
+                <element signature="e#893#973#0#PHP" expanded="false" />
+                <element signature="e#979#2156#0#PHP" expanded="false" />
+                <element signature="e#2162#3130#0#PHP" expanded="false" />
+                <element signature="e#3136#3752#0#PHP" expanded="false" />
+                <element signature="e#3758#4685#0#PHP" expanded="false" />
+                <element signature="e#4691#5814#0#PHP" expanded="false" />
+                <element signature="e#5820#6172#0#PHP" expanded="false" />
+                <element signature="e#6802#7906#0#PHP" expanded="false" />
+                <element signature="e#7912#8592#0#PHP" expanded="false" />
+                <element signature="e#8598#8876#0#PHP" expanded="false" />
+                <element signature="e#8882#12919#0#PHP" expanded="false" />
+                <element signature="e#15970#17394#0#PHP" expanded="false" />
+                <element signature="e#17400#17840#0#PHP" expanded="false" />
+                <element signature="e#17846#18312#0#PHP" expanded="false" />
+                <element signature="e#18318#19630#0#PHP" expanded="false" />
+                <element signature="e#19636#20621#0#PHP" expanded="false" />
+                <element signature="e#20627#21215#0#PHP" expanded="false" />
+                <element signature="e#21221#21722#0#PHP" expanded="false" />
+                <element signature="e#21728#22268#0#PHP" expanded="false" />
+                <element signature="e#22274#23427#0#PHP" expanded="false" />
+                <element signature="e#23433#26021#0#PHP" expanded="false" />
+                <element signature="e#26027#26807#0#PHP" expanded="false" />
+                <element signature="e#26813#28434#0#PHP" expanded="false" />
+                <element signature="e#28440#30311#0#PHP" expanded="false" />
+                <element signature="e#30317#30869#0#PHP" expanded="false" />
+                <marker date="1575166469888" expanded="true" signature="6428:6585" placeholder="SELECT a.*,b..." />
+                <marker date="1575166469888" expanded="true" signature="8111:8257" placeholder="SELECT a.*,b..cart..." />
+                <marker date="1575166469888" expanded="true" signature="8111:8283" placeholder="SELECT a.*,b..cart..." />
+                <marker date="1575166469888" expanded="true" signature="16180:16587" placeholder="SELECT a.*,b..buddy..." />
+                <marker date="1575166469888" expanded="true" signature="16180:16605" placeholder="SELECT * FRO..buddy..." />
+                <marker date="1575166469888" expanded="true" signature="16180:16626" placeholder="SELECT a.*,b..buddy..." />
+                <marker date="1575166469888" expanded="true" signature="16180:16672" placeholder="SELECT a.*,b..buddy..." />
+                <marker date="1575166469888" expanded="true" signature="16691:17143" placeholder="SELECT a.*,b..buddy..." />
+                <marker date="1575166469888" expanded="true" signature="18660:18906" placeholder="SELECT a.*,D..cart..." />
+                <marker date="1575166469888" expanded="true" signature="19998:20200" placeholder="SELECT a.bud..bu..." />
+                <marker date="1575166469888" expanded="true" signature="19998:20273" placeholder="SELECT a.bud..buddy..." />
+                <marker date="1575166469888" expanded="true" signature="19998:20319" placeholder="SELECT a.bud..buddy..." />
+                <marker date="1575166469888" expanded="true" signature="19998:20342" placeholder="SELECT a.bud..buddy..." />
+                <marker date="1575166469888" expanded="true" signature="19998:20392" placeholder="SELECT a.bud..buddy..." />
+                <marker date="1575166469888" expanded="true" signature="23644:24125" placeholder="SELECT b.ser..cart..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CartSearch.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/common/models/CartSearch.php">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/views/site/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.27704486">
-              <caret line="9" column="42" selection-start-line="0" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="428" column="16" selection-start-line="428" selection-start-column="16" selection-end-line="428" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/models/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="159" column="5" selection-start-line="159" selection-start-column="5" selection-end-line="159" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -69,23 +110,9 @@
       <file leaf-file-name="params.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/config/params.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.875">
-              <caret line="19" column="70" selection-start-line="19" selection-start-column="70" selection-end-line="19" selection-end-column="70" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TravellerController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/controllers/TravellerController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.5416665">
-              <caret line="33" column="47" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
-              <folding>
-                <element signature="e#40#64#0#PHP" expanded="true" />
-                <element signature="e#1313#4362#0#PHP" expanded="false" />
-                <element signature="e#4564#5985#0#PHP" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -98,7 +125,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/backend/views/site/login.php" />
         <option value="$PROJECT_DIR$/common/models/Services.php" />
         <option value="$PROJECT_DIR$/backend/views/services/_form.php" />
         <option value="$PROJECT_DIR$/backend/views/services/index.php" />
@@ -118,7 +144,6 @@
         <option value="$PROJECT_DIR$/frontend/views/user-service/view.php" />
         <option value="$PROJECT_DIR$/frontend/assets/AppAsset.php" />
         <option value="$PROJECT_DIR$/frontend/views/layouts/profile.php" />
-        <option value="$PROJECT_DIR$/common/models/Profile.php" />
         <option value="$PROJECT_DIR$/common/models/Country.php" />
         <option value="$PROJECT_DIR$/common/models/State.php" />
         <option value="$PROJECT_DIR$/common/models/UserService.php" />
@@ -136,18 +161,20 @@
         <option value="$PROJECT_DIR$/frontend/views/cart/_form.php" />
         <option value="$PROJECT_DIR$/frontend/models/SignupForm.php" />
         <option value="$PROJECT_DIR$/frontend/views/traveller/index.php" />
-        <option value="$PROJECT_DIR$/common/mail/inviteBudy-html.php" />
-        <option value="$PROJECT_DIR$/common/models/Buddy.php" />
-        <option value="$PROJECT_DIR$/common/config/params.php" />
         <option value="$PROJECT_DIR$/frontend/controllers/SiteController.php" />
-        <option value="$PROJECT_DIR$/frontend/views/traveller/redirect.php" />
         <option value="$PROJECT_DIR$/common/models/LoginFormBuddy.php" />
-        <option value="$PROJECT_DIR$/common/models/User.php" />
         <option value="$PROJECT_DIR$/frontend/controllers/TravellerController.php" />
         <option value="$PROJECT_DIR$/common/models/Payment.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/common/models/BuddySearch.php" />
+        <option value="$PROJECT_DIR$/common/config/params.php" />
+        <option value="$PROJECT_DIR$/common/models/Buddy.php" />
         <option value="$PROJECT_DIR$/common/models/Cart.php" />
         <option value="$PROJECT_DIR$/common/models/CartSearch.php" />
+        <option value="$PROJECT_DIR$/common/mail/inviteBudy-html.php" />
+        <option value="$PROJECT_DIR$/frontend/views/traveller/redirect.php" />
+        <option value="$PROJECT_DIR$/common/models/User.php" />
+        <option value="$PROJECT_DIR$/common/models/Profile.php" />
         <option value="$PROJECT_DIR$/common/modules/api/controllers/MobileController.php" />
       </list>
     </option>
@@ -191,7 +218,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -207,6 +234,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="igotour" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IgoTour" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="igotour" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frontend" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -244,7 +285,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -305,18 +346,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="733" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="733" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39579967" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27948305" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript Compiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32970452" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32970452" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917318" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32761312" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15863141" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -324,7 +365,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32970452" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917318" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -345,47 +386,98 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/db/ActiveRecord.php">
+    <entry file="file://$PROJECT_DIR$/frontend/views/site/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.670628">
-          <caret line="73" column="3" selection-start-line="73" selection-start-column="3" selection-end-line="73" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.40633246">
+          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/controllers/ProfileController.php">
+    <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/base/Module.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.984252">
+          <caret line="56" column="11" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/models/LoginFormAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.1653543">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/models/LoginForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35433072">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/web/Application.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.277045">
+          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2605459">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/models/Payment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5">
+          <caret line="46" column="52" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/models/BuddySearch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.625">
+          <caret line="19" column="45" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/models/CartQuery.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/web/uploads/images/services/advanture.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/models/State.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.35526314">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/models/Services.php">
+    <entry file="file://$PROJECT_DIR$/common/models/CartSearch.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.43421054">
+        <state vertical-scroll-proportion="3.031496">
+          <caret line="79" column="46" selection-start-line="0" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/models/Cart.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="48" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/payment/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.7322835">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/models/Reference.php">
+    <entry file="file://$PROJECT_DIR$/frontend/controllers/PaymentController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.43421054">
+        <state vertical-scroll-proportion="42.25">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/config/params-local.php">
+    <entry file="file://$PROJECT_DIR$/common/config/bootstrap.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -394,339 +486,311 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/common/config/main-local.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40789473">
-          <caret line="21" column="49" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/models/Country.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35433072">
-          <caret line="30" column="5" selection-start-line="25" selection-start-column="4" selection-end-line="30" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/controllers/CartController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33070865">
-          <caret line="116" column="63" selection-start-line="116" selection-start-column="63" selection-end-line="116" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/cart/_form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35170603">
-          <caret line="26" column="47" selection-start-line="0" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/cart/_search.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43307087">
-          <caret line="22" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/cart/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31496063">
-          <caret line="9" column="36" selection-start-line="0" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/cart/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43307087">
-          <caret line="12" column="2" selection-start-line="0" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/web/.user.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/layouts/main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/assets/AppAsset.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.2283463">
-          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/web/assets_unify_262/img/bg/bg-img1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/web/assets_unify_262/img/bg/bricks--white.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/web/assets_unify_262/img/bg/none-bg.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/web/assets_unify_262/img/bg/pattern2.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/web/assets_unify_262/img/bg/pattern--green.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/models/Profile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35433072">
-          <caret line="37" column="5" selection-start-line="32" selection-start-column="4" selection-end-line="37" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/site/about.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23622048">
-          <caret line="15" column="8" selection-start-line="0" selection-start-column="0" selection-end-line="108" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/traveller/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2519685">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/mail/inviteBudy-html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07874016">
-          <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/config/main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62992126">
-          <caret line="59" column="10" selection-start-line="53" selection-start-column="8" selection-end-line="59" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.35532996">
+          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/common/config/main.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31496063">
-          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.35532996">
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/models/SignupForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6728232">
-          <caret line="47" column="40" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/layouts/footer.php">
+    <entry file="file://$PROJECT_DIR$/frontend/config/main.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="52" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/assets/AppAsset.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26395938">
+          <caret line="62" column="54" selection-start-line="62" selection-start-column="54" selection-end-line="62" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/layouts/main_bak.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/layouts/header.php">
+    <entry file="file://$PROJECT_DIR$/common/mail/inviteBudy-html.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.176781">
-          <caret line="55" column="43" selection-start-line="55" selection-start-column="43" selection-end-line="55" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/web/uploads/images/kohlipe.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/site/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40633246">
-          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/site/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.050847456">
-          <caret line="150" column="30" selection-start-line="150" selection-start-column="30" selection-end-line="150" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/traveller/redirect.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27559054">
-          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/base/Module.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.984252">
-          <caret line="56" column="11" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/models/Buddy.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.25984251">
-          <caret line="45" column="7" selection-start-line="45" selection-start-column="7" selection-end-line="45" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/models/LoginFormAdmin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.1653543">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/models/LoginForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35433072">
-          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/web/Application.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.277045">
-          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
-          <folding />
+        <state vertical-scroll-proportion="0.05263158">
+          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/controllers/SiteController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33773088">
-          <caret line="195" column="21" selection-start-line="195" selection-start-column="21" selection-end-line="195" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="337" column="5" selection-start-line="314" selection-start-column="4" selection-end-line="337" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/models/PasswordResetRequestForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/models/Profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.9404517">
+          <caret line="96" column="5" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/models/Reference.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26078027">
+          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/layouts/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3006135">
+          <caret line="49" column="66" selection-start-line="49" selection-start-column="66" selection-end-line="49" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/layouts/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.63190186">
+          <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="165" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/models/Buddy.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="33" column="5" selection-start-line="28" selection-start-column="4" selection-end-line="33" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/models/User.php">
+    <entry file="file://$PROJECT_DIR$/frontend/views/site/signup.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24802111">
-          <caret line="102" column="5" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
-          <folding>
-            <marker date="1566145421407" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..user..." />
-          </folding>
+        <state vertical-scroll-proportion="-0.5337423">
+          <caret line="58" column="69" selection-start-line="58" selection-start-column="54" selection-end-line="58" selection-end-column="69" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/models/LoginFormBuddy.php">
+    <entry file="file://$PROJECT_DIR$/frontend/models/SignupForm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32717678">
-          <caret line="67" column="24" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="24" />
+        <state vertical-scroll-proportion="-1.7607362">
+          <caret line="46" column="37" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/controllers/TravellerController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5416665">
-          <caret line="33" column="47" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
-          <folding>
-            <element signature="e#40#64#0#PHP" expanded="true" />
-            <element signature="e#1313#4362#0#PHP" expanded="false" />
-            <element signature="e#4564#5985#0#PHP" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.38650307">
+          <caret line="168" column="39" selection-start-line="168" selection-start-column="39" selection-end-line="168" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/common/models/Country.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2605459">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.35582823">
+          <caret line="51" column="36" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/state/create.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/state/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.28834355">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/traveller/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5705522">
+          <caret line="19" column="55" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/traveller/redirect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17177914">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/user-service/create.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/user-service/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.5030675">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/buddy/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.3190184">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/cart/create.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/cart/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6564417">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/country/create.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/country/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.2576687">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/site/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.80981594">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/user/create.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/services/create.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/services/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.9631902">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/common/config/params.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.875">
-          <caret line="19" column="70" selection-start-line="19" selection-start-column="70" selection-end-line="19" selection-end-column="70" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/models/Payment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5">
-          <caret line="46" column="52" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="52" />
-          <folding>
-            <element signature="e#33#41#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/models/CartQuery.php">
+    <entry file="file://$PROJECT_DIR$/frontend/views/site/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="428" column="16" selection-start-line="428" selection-start-column="16" selection-end-line="428" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/models/Cart.php">
+    <entry file="file://$PROJECT_DIR$/common/models/LoginFormBuddy.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4353562">
-          <caret line="51" column="16" selection-start-line="0" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.63190186">
+          <caret line="72" column="44" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="159" column="5" selection-start-line="159" selection-start-column="5" selection-end-line="159" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/common/modules/api/controllers/MobileController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.0">
-          <caret line="387" column="47" selection-start-line="0" selection-start-column="0" selection-end-line="438" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.13292433">
+          <caret line="434" column="39" selection-start-line="434" selection-start-column="39" selection-end-line="434" selection-end-column="39" />
           <folding>
             <element signature="e#50#74#0#PHP" expanded="true" />
-            <element signature="e#500#787#0#PHP" expanded="false" />
-            <element signature="e#793#873#0#PHP" expanded="false" />
-            <element signature="e#879#2056#0#PHP" expanded="false" />
-            <element signature="e#2061#3029#0#PHP" expanded="false" />
-            <element signature="e#3035#3651#0#PHP" expanded="false" />
-            <element signature="e#3657#4584#0#PHP" expanded="false" />
-            <element signature="e#4590#4942#0#PHP" expanded="false" />
-            <element signature="e#4948#5566#0#PHP" expanded="false" />
-            <element signature="e#5572#6497#0#PHP" expanded="false" />
-            <element signature="e#6503#7183#0#PHP" expanded="false" />
-            <element signature="e#7189#7467#0#PHP" expanded="false" />
-            <element signature="e#7473#11510#0#PHP" expanded="false" />
-            <element signature="e#14468#14695#0#PHP" expanded="false" />
-            <marker date="1566224559707" expanded="true" signature="5198:5355" placeholder="SELECT a.*,b..." />
-            <marker date="1566224559707" expanded="true" signature="6702:6848" placeholder="SELECT a.*,b..cart..." />
-            <marker date="1566224559707" expanded="true" signature="6702:6874" placeholder="SELECT a.*,b..cart..." />
+            <element signature="e#600#887#0#PHP" expanded="false" />
+            <element signature="e#893#973#0#PHP" expanded="false" />
+            <element signature="e#979#2156#0#PHP" expanded="false" />
+            <element signature="e#2162#3130#0#PHP" expanded="false" />
+            <element signature="e#3136#3752#0#PHP" expanded="false" />
+            <element signature="e#3758#4685#0#PHP" expanded="false" />
+            <element signature="e#4691#5814#0#PHP" expanded="false" />
+            <element signature="e#5820#6172#0#PHP" expanded="false" />
+            <element signature="e#6802#7906#0#PHP" expanded="false" />
+            <element signature="e#7912#8592#0#PHP" expanded="false" />
+            <element signature="e#8598#8876#0#PHP" expanded="false" />
+            <element signature="e#8882#12919#0#PHP" expanded="false" />
+            <element signature="e#15970#17394#0#PHP" expanded="false" />
+            <element signature="e#17400#17840#0#PHP" expanded="false" />
+            <element signature="e#17846#18312#0#PHP" expanded="false" />
+            <element signature="e#18318#19630#0#PHP" expanded="false" />
+            <element signature="e#19636#20621#0#PHP" expanded="false" />
+            <element signature="e#20627#21215#0#PHP" expanded="false" />
+            <element signature="e#21221#21722#0#PHP" expanded="false" />
+            <element signature="e#21728#22268#0#PHP" expanded="false" />
+            <element signature="e#22274#23427#0#PHP" expanded="false" />
+            <element signature="e#23433#26021#0#PHP" expanded="false" />
+            <element signature="e#26027#26807#0#PHP" expanded="false" />
+            <element signature="e#26813#28434#0#PHP" expanded="false" />
+            <element signature="e#28440#30311#0#PHP" expanded="false" />
+            <element signature="e#30317#30869#0#PHP" expanded="false" />
+            <marker date="1575166469888" expanded="true" signature="6428:6585" placeholder="SELECT a.*,b..." />
+            <marker date="1575166469888" expanded="true" signature="8111:8257" placeholder="SELECT a.*,b..cart..." />
+            <marker date="1575166469888" expanded="true" signature="8111:8283" placeholder="SELECT a.*,b..cart..." />
+            <marker date="1575166469888" expanded="true" signature="16180:16587" placeholder="SELECT a.*,b..buddy..." />
+            <marker date="1575166469888" expanded="true" signature="16180:16605" placeholder="SELECT * FRO..buddy..." />
+            <marker date="1575166469888" expanded="true" signature="16180:16626" placeholder="SELECT a.*,b..buddy..." />
+            <marker date="1575166469888" expanded="true" signature="16180:16672" placeholder="SELECT a.*,b..buddy..." />
+            <marker date="1575166469888" expanded="true" signature="16691:17143" placeholder="SELECT a.*,b..buddy..." />
+            <marker date="1575166469888" expanded="true" signature="18660:18906" placeholder="SELECT a.*,D..cart..." />
+            <marker date="1575166469888" expanded="true" signature="19998:20200" placeholder="SELECT a.bud..bu..." />
+            <marker date="1575166469888" expanded="true" signature="19998:20273" placeholder="SELECT a.bud..buddy..." />
+            <marker date="1575166469888" expanded="true" signature="19998:20319" placeholder="SELECT a.bud..buddy..." />
+            <marker date="1575166469888" expanded="true" signature="19998:20342" placeholder="SELECT a.bud..buddy..." />
+            <marker date="1575166469888" expanded="true" signature="19998:20392" placeholder="SELECT a.bud..buddy..." />
+            <marker date="1575166469888" expanded="true" signature="23644:24125" placeholder="SELECT b.ser..cart..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/models/CartSearch.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27704486">
-          <caret line="9" column="42" selection-start-line="0" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>

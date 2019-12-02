@@ -156,6 +156,11 @@ class User extends ActiveRecord implements IdentityInterface
         return Profile::find()->where(['user_id' => Yii::$app->user->identity->id])->one();
     }
 
+    public function getMyProfile()
+    {
+        return $this->hasOne(Profile::className(), ['user_id' => 'id']);
+    }
+
     public static function getProfileGuider($id)
     {
         return Profile::find()->where(['user_id' => $id])->one();

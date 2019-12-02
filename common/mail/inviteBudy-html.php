@@ -15,8 +15,9 @@ use yii\helpers\Html;
         <li>Traveller's Email : <b><?=$user->email?></b></li>
         <li>Traveller's Phone : <b><?=$user->phone?></b></li>
         <li>Service : <b><?=$cart->service_title?></b></li>
+        <li>Specific Place (if any) : <b><?=$cart->specific_place?></b></li>
         <li>State/Country of Service : <b><?=$cart->state->name?> <?=$cart->country->name?></b></li>
-        <li>Total Pax : <b><?=$cart->pax?></b></li>
+        <li>Total Pax : <b><?=$cart->pax?> ( <?=$cart->male?>:Male,  <?=$cart->female?>:Female, <?=$cart->infant?>:Infant )</b></li>
         <li>Date : <b><?=Yii::$app->formatter->asDate($cart->date,'long')?></b></li>
         <li>Time : <b><?=Yii::$app->formatter->asTime($cart->start_time)?> - <?=Yii::$app->formatter->asTime($cart->end_time)?></b></li>
         <li>Duration : <b><?=$cart->duration?> Hours</b></li>

@@ -3,9 +3,12 @@
 namespace common\modules\api\controllers;
 
 use common\models\Buddy;
+use common\models\Country;
 use common\models\LoginForm;
 use common\models\LoginFormBuddy;
+use common\models\Profile;
 use common\models\State;
+use frontend\models\PasswordResetRequestForm;
 use frontend\models\SignupForm;
 use common\models\Cart;
 use common\models\Payment;
@@ -64,6 +67,7 @@ class MobileController extends Controller
             }
         }
     }
+
     public function actionLoginBuddy()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
@@ -139,6 +143,49 @@ class MobileController extends Controller
         }
     }
 
+    public function actionSignupBuddy()
+    {
+        header('Access-Control-Allow-Origin: *');
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $data = Yii::$app->request->post();
+
+        $name = $data['name'];
+        $email = $data['email'];
+        $phone = $data['phone'];
+
+//        $address = $data['address'];
+//        $postcode = $data['postcode'];
+//        $city = $data['city'];
+//        $state = $data['state'];
+//        $country = $data['country'];
+
+        $password = $data['password'];
+        $user_status = $data['user_status'];
+        $ic = $data['ic'];
+
+        $model = new SignupForm();
+
+        $model->username = $name;
+        $model->email = $email;
+        $model->phone = $phone;
+
+
+        $model->password = $password;
+        $model->password_repeat = $password;
+        $model->user_status = $user_status;
+        $model->reference_code = '';
+        $model->ic_passport = $ic;
+        $model->role = 'bd';
+
+        if($model->signup())
+        {
+            return ['status' => 'saved'];
+        }else {
+            return ['status' => $model->errors];
+        }
+    }
+
     public function actionFindStates()
     {
         header('Access-Control-Allow-Origin: *');
@@ -192,7 +239,11 @@ class MobileController extends Controller
         $model->end_time = $data['end_time'];
         $model->status = $data['status'];
         $model->pax = $data['pax'];
+        $model->male = $data['male'];
+        $model->female = $data['female'];
+        $model->infant = $data['infant'];
         $model->pickup_location = $data['pickup'];
+        $model->specific_place = $data['specificplace'];
 
         if($model->save())
             return ['status' => true, 'order_id' => $model->id];
@@ -402,11 +453,12 @@ class MobileController extends Controller
                             ->setSubject('Guide Invitation for Service ' . $cart->service_title)
                             ->send();
 
-                        $model = new Buddy();
-                        $model->buddy_id = $buddy['user_id'];
-                        $model->cart_id = $id;
-                        $model->status = 0;
-                        $model->save();
+//                        $model = new Buddy();
+//                        $model->buddy_id = $buddy['user_id'];
+//                        $model->traveller_id = $findCartIds->user_id;
+//                        $model->cart_id = $id;
+//                        $model->status = 0;
+//                        $model->save();
 
                     }
 
@@ -415,7 +467,7 @@ class MobileController extends Controller
                     $cart->save();
                 }
                 $findCartIds->status = 1;
-                $findCartIds->amount = $data['amount'];
+                $findCartIds->amount = ((int)$data['amount'])/100;
                 $findCartIds->save();
             }
 
@@ -426,14 +478,373 @@ class MobileController extends Controller
         }
     }
 
-    public function actionTaraa()
+    public function actionBuddyRequestList()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
 
         $data = Yii::$app->request->post();
 
-        return ['session_id' => 'session_id from api ->'.$data['session_id']];
+        $buddyID = $data['buddyID'];
+
+//        $sql = 'SELECT a.*,b.service_title,b.pax,b.duration,DATE_FORMAT(FROM_UNIXTIME(b.date),"%e %b %Y") as datez,DATE_FORMAT(FROM_UNIXTIME(b.start_time),"%H:%i") as timefrom,DATE_FORMAT(FROM_UNIXTIME(b.end_time),"%H:%i") as timeto,DATE_FORMAT(FROM_UNIXTIME(b.created_at),"%e %b %Y %H:%i") as createdOn,now() as noww,c.name as country,d.name as state FROM buddy a, cart b, country c, state d WHERE a.buddy_id = '.$buddyID.' AND a.status = 0 AND a.cart_id = b.id AND b.country_id = c.id AND b.state_id = d.id';
+        $sql = 'SELECT a.*,b.service_title,b.pax,b.duration,DATE_FORMAT(FROM_UNIXTIME(b.date),"%e %b %Y") as datez,DATE_FORMAT(FROM_UNIXTIME(b.start_time),"%H:%i") as timefrom,DATE_FORMAT(FROM_UNIXTIME(b.end_time),"%H:%i") as timeto,b.created_at as created_on,b.pickup_location,c.name as country,d.name as state FROM buddy a, cart b, country c, state d WHERE a.buddy_id = '.$buddyID.' AND a.status = 0 AND a.cart_id = b.id AND b.country_id = c.id AND b.state_id = d.id';
+
+        $model = Yii::$app->db->createCommand($sql);
+        $data = $model->queryAll();
+
+        if($data)
+            return ['status' => true, 'list' => $data,'nowTimestamp' => time()];
+        else
+            return ['status' => false];
     }
 
+    public function actionUpdateStatusBuddy()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $data = Yii::$app->request->post();
+
+        $id = $data['id'];
+        $status = $data['status'];
+
+        $model = Buddy::findOne($id);
+        $model->status = $status;
+        if($model->save())
+            return ['status' => true];
+        else
+            return ['status' => false,'error' => $model->errors];
+    }
+
+    public function actionMyTours()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $data = Yii::$app->request->post();
+
+        $traveller_id = $data['user_id'];
+
+        $model = Payment::find()->where(['user_id' => $traveller_id, 'status' => 1])->all();
+
+        if($model)
+            return ['status' => true, 'data' => $model,'nowTimestamp' => time()];
+        else
+            return ['status' => false , 'err' => $model->errors];
+    }
+
+    public function actionGetMyCarts()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $data = Yii::$app->request->post();
+
+        $cart_ids = $data['cart_id'];
+
+        $cart_ids_string = array_map('intval', explode(',', $cart_ids));
+        $cart_ids_int = trim(implode(',', $cart_ids_string),'"');
+
+        $sql = 'SELECT a.*,DATE_FORMAT(FROM_UNIXTIME(a.date),"%e %b %Y") as datez,DATE_FORMAT(FROM_UNIXTIME(a.start_time),"%H:%i") as timefrom,DATE_FORMAT(FROM_UNIXTIME(a.end_time),"%H:%i") as timeto FROM cart a WHERE a.id IN ('.$cart_ids_int.') AND a.status = 1';
+
+        $model = Yii::$app->db->createCommand($sql);
+        $data = $model->queryAll();
+        //$sql = 'SELECT a.*,b.service_title,b.pax,b.duration,DATE_FORMAT(FROM_UNIXTIME(b.date),"%e %b %Y") as datez,DATE_FORMAT(FROM_UNIXTIME(b.start_time),"%H:%i") as timefrom,DATE_FORMAT(FROM_UNIXTIME(b.end_time),"%H:%i") as timeto,b.created_at as created_on,b.pickup_location,c.name as country,d.name as state FROM buddy a, cart b, country c, state d WHERE a.buddy_id = '.$buddyID.' AND a.status = 0 AND a.cart_id = b.id AND b.country_id = c.id AND b.state_id = d.id';
+
+        if($data)
+            return ['status' => true, 'data' => $data,'nowTimestamp' => time()];
+        else
+            return ['status' => false];
+    }
+
+    public function actionChooseBuddy()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $data = Yii::$app->request->post();
+
+        $cart_id = $data['cart_id'];
+        $traveller_id = $data['myid'];
+
+//        $model = Buddy::find()->where(['traveller_id' => $traveller_id,'cart_id' => $cart_id, 'status' => 2])->all();
+
+        $sql = 'SELECT a.buddy_id,a.traveller_id,a.cart_id,a.status AS buddy_tbl_status,aa.buddy_id as status_buddy,b.username,b.email,b.phone,DATE_FORMAT(FROM_UNIXTIME(b.created_at),"%e %b %Y") as joinedon,c.* FROM buddy a, cart aa, user b, profile c WHERE a.traveller_id = '.$traveller_id.' AND a.cart_id = '.$cart_id.' AND a.status = 2 AND a.buddy_id = b.id  AND a.cart_id = aa.id AND a.buddy_id = c.user_id';
+
+        $mode = Yii::$app->db->createCommand($sql);
+        $model = $mode->queryAll();
+
+        if($model)
+            return ['status' => true, 'data' => $model];
+        else
+            return ['status' => false];
+
+
+    }
+
+    public function actionSetBuddy()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $data = Yii::$app->request->post();
+
+        $cart_id = $data['cart_id'];
+        $buddy_id = $data['buddy_id'];
+
+        $model = Cart::findOne($cart_id);
+        $model->buddy_id = $buddy_id;
+
+
+        if($model->save()){
+
+            $buddy = User::findOne($buddy_id);
+            $buddyDetails = $buddy->myProfile;
+
+            return ['status' => true, 'buddy' => $buddy,'buddyDetails' => $buddyDetails];
+        }
+        else
+            return ['status' => false];
+
+
+    }
+
+    public function actionCreateBuddy()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $data = Yii::$app->request->post();
+
+        $model = new Buddy();
+        $model->buddy_id = $data['buddy_id'];
+        $model->traveller_id = $data['traveller_id'];
+        $model->cart_id = $data['cart_id'];
+        $model->status = 2;
+
+        if($model->save())
+            return ['status' => true];
+        else
+            return ['status' => false,'error' => $model->errors];
+    }
+
+    public function actionGetBuddyProfile()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $data = Yii::$app->request->post();
+
+        $user_id = $data['user_id'];
+
+        $model = User::findOne($user_id);
+
+        if($model){
+            return ['status' => true, 'user' => $model,'profile' => $model->profile,'state_list' => State::find()->where(['country_id' => $model->myProfile->country])->all(),'country_list' => Country::find()->all()];
+        }
+        else
+            return ['status' => false];
+
+
+    }
+
+    public function actionUpdateBuddyProfile()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $data = Yii::$app->request->post();
+
+        $user_id = $data['user_id'];
+        $profile_id = $data['profile_id'];
+        $aboutme = $data['aboutme'];
+        $username = $data['username'];
+        $phone = $data['phone'];
+        $website = $data['website'];
+        $address = $data['address'];
+        $postcode = $data['postcode'];
+        $city = $data['city'];
+        $state = $data['state'];
+        $country = $data['country'];
+
+        $model = User::findOne($user_id);
+        $profile = Profile::findOne($profile_id);
+        $model->username = $username;
+        $model->phone = $phone;
+
+        $profile->website = $website;
+        $profile->address = $address;
+        $profile->postcode = $postcode;
+        $profile->city = $city;
+        $profile->state = $state;
+        $profile->country = $country;
+        $profile->about_me = $aboutme;
+
+        if($model->save() && $profile->save())
+            return ['status' => true];
+        else
+            return ['status' => false,'error' => $model->errors];
+    }
+
+    public function actionBuddySelectedList()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $data = Yii::$app->request->post();
+
+        $buddyID = $data['buddyID'];
+
+//        $sql = 'SELECT b.service_title,b.pax,b.duration,b.date,DATE_FORMAT(FROM_UNIXTIME(b.date),"%e %b %Y") as datez,DATE_FORMAT(FROM_UNIXTIME(b.start_time),"%H:%i") as timefrom,DATE_FORMAT(FROM_UNIXTIME(b.end_time),"%H:%i") as timeto,b.created_at as created_on,b.pickup_location,c.name as country,d.name as state,a.username,a.phone,a.email FROM cart b, country c, state d, user a WHERE b.buddy_id = '.$buddyID.' AND b.status = 1 AND b.country_id = c.id AND b.state_id = d.id AND b.user_id = a.id';
+//        $model1 = Yii::$app->db->createCommand($sql);
+//        $model = $model1->queryAll();
+
+        $today = strtotime(date('Y-m-d'));
+
+        $model = Cart::find()
+            ->select(['services.id AS serviceId',
+                'services.title AS serviceTitle',
+                'services.price AS servicePrice',
+                'services.description AS serviceDescription',
+                'services.image_file',
+                'user.username',
+                'user.phone',
+                'cart.*',
+                'DATE_FORMAT(FROM_UNIXTIME(cart.date),"%e %b %Y") as datez',
+                'DATE_FORMAT(FROM_UNIXTIME(cart.start_time),"%H:%i") as timefrom',
+                'DATE_FORMAT(FROM_UNIXTIME(cart.end_time),"%H:%i") as timeto',
+                'country.name AS countryName',
+                'state.name AS stateName' ])
+            ->leftJoin('buddy','buddy.cart_id = cart.id')
+            ->leftJoin('state_service','state_service.service_id = cart.service_id AND state_service.country_id = cart.country_id AND state_service.state_id = cart.state_id')
+            ->leftJoin('services','services.id = cart.service_id')
+            ->leftJoin('country','country.id = cart.country_id')
+            ->leftJoin('state','state.id = cart.state_id')
+            ->leftJoin('user','user.id = cart.user_id')
+            ->where(['state_service.user_id'=> (int)$buddyID,
+                'cart.status' => 1,
+                'cart.buddy_id'=> $buddyID,
+            ])
+            //->andWhere(['=', 'buddy.buddy_id', Yii::$app->user->identity->id])
+//            ->andWhere(['IS', 'cart.buddy_id', NULL])
+            ->andWhere(['>=', 'cart.date', $today])
+            ->groupBy('cart.id')
+            ->asArray()->all();
+
+        if($model)
+            return ['status' => true, 'list' => $model,'nowTimestamp' => time()];
+        else
+            return ['status' => false];
+    }
+
+    public function actionRequestPasswordReset()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $data = Yii::$app->request->post();
+
+        $email = $data['email'];
+
+        $model = new PasswordResetRequestForm();
+        $model->email = $email;
+
+        if ($model->validate()) {
+            if ($model->sendEmail()) {
+                return ['status' => true, 'msg' => 'Success! Check your email for further instructions.'];
+            } else {
+                return ['status' => false, 'msg' => 'We are Sorry, unable to send reset password link to the provided email address.'];
+            }
+        }else {
+            return ['status' => false, 'msg' => 'Error!, We are unable to reset password for the provided email address.'];
+        }
+    }
+
+    public function actionFindMyTotalTravellerRequest()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $data = Yii::$app->request->post();
+
+        $buddyID = $data['buddyID'];
+
+        $today = strtotime(date('Y-m-d'));
+        $plan = Cart::find()
+            ->select(['services.id AS serviceId',
+                'services.title AS serviceTitle',
+                'services.price AS servicePrice',
+                'services.description AS serviceDescription',
+                'services.image_file',
+                'cart.*',
+                'country.name AS countryName',
+                'state.name AS stateName' ])
+            ->leftJoin('buddy','buddy.cart_id = cart.id')
+            ->leftJoin('state_service','state_service.service_id = cart.service_id AND state_service.country_id = cart.country_id AND state_service.state_id = cart.state_id')
+            ->leftJoin('services','services.id = cart.service_id')
+            ->leftJoin('country','country.id = cart.country_id')
+            ->leftJoin('state','state.id = cart.state_id')
+            ->where(['state_service.user_id'=> (int)$buddyID,
+                'cart.status' => 1,
+                //'buddy.status'=> 0,
+            ])
+            ->andWhere(['IS', 'cart.buddy_id', NULL])
+            ->andWhere(['>=', 'cart.date', $today])
+            ->groupBy('cart.id')
+            //->andWhere(['!=', 'cart.buddy_id', Yii::$app->user->identity->id])
+            ->count();
+
+        if($plan)
+            return ['status' => true, 'total' => $plan,'nowTimestamp' => time()];
+        else
+            return ['status' => false];
+    }
+
+    public function actionFindMyListTravellerRequest()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $data = Yii::$app->request->post();
+
+        $buddyID = $data['buddyID'];
+
+        $today = strtotime(date('Y-m-d'));
+
+        $model = Cart::find()
+            ->select(['services.id AS serviceId',
+                'services.title AS serviceTitle',
+                'services.price AS servicePrice',
+                'services.description AS serviceDescription',
+                'services.image_file',
+                'cart.*',
+                'DATE_FORMAT(FROM_UNIXTIME(cart.date),"%e %b %Y") as datez',
+                'DATE_FORMAT(FROM_UNIXTIME(cart.start_time),"%H:%i") as timefrom',
+                'DATE_FORMAT(FROM_UNIXTIME(cart.end_time),"%H:%i") as timeto',
+                'country.name AS countryName',
+                'state.name AS stateName' ])
+            ->leftJoin('buddy','buddy.cart_id = cart.id')
+            ->leftJoin('state_service','state_service.service_id = cart.service_id AND state_service.country_id = cart.country_id AND state_service.state_id = cart.state_id')
+            ->leftJoin('services','services.id = cart.service_id')
+            ->leftJoin('country','country.id = cart.country_id')
+            ->leftJoin('state','state.id = cart.state_id')
+            ->where(['state_service.user_id'=> (int)$buddyID,
+                'cart.status' => 1,
+                //'buddy.status'=> 0,
+            ])
+            //->andWhere(['=', 'buddy.buddy_id', Yii::$app->user->identity->id])
+            ->andWhere(['IS', 'cart.buddy_id', NULL])
+            ->andWhere(['>=', 'cart.date', $today])
+            ->groupBy('cart.id')
+            ->asArray()->all();
+
+        if($model)
+            return ['status' => true, 'list' => $model,'nowTimestamp' => time()];
+        else
+            return ['status' => false];
+    }
+
+    public function actionIsOffered()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $data = Yii::$app->request->post();
+
+        $buddyID = $data['buddyID'];
+        $travellerID = $data['travellerID'];
+        $cartID = $data['cartID'];
+
+        $model = Buddy::find()
+            ->where([ 'buddy_id' => $buddyID, 'traveller_id' => $travellerID, 'cart_id' => $cartID, 'status' => 2 ])
+            ->one();
+
+        if($model)
+            return ['status' => true];
+        else
+            return ['status' => false];
+
+    }
 
 }

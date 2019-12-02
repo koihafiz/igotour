@@ -17,7 +17,7 @@ class BuddySearch extends Buddy
     public function rules()
     {
         return [
-            [['id', 'buddy_id', 'cart_id', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'buddy_id', 'traveller_id', 'cart_id', 'status', 'created_at', 'updated_at'], 'integer'],
         ];
     }
 
@@ -59,6 +59,7 @@ class BuddySearch extends Buddy
         $query->andFilterWhere([
             'id' => $this->id,
             'buddy_id' => $this->buddy_id,
+            'traveller_id' => $this->traveller_id,
             'cart_id' => $this->cart_id,
             'status' => $this->status,
             'created_at' => $this->created_at,

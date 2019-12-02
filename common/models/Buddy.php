@@ -10,6 +10,7 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property int $id
  * @property int $buddy_id
+ * @property int $traveller_id
  * @property int $cart_id
  * @property int $status
  * @property int $created_at
@@ -32,6 +33,7 @@ class Buddy extends \yii\db\ActiveRecord
         ];
     }
 
+
     /**
      * {@inheritdoc}
      */
@@ -39,7 +41,7 @@ class Buddy extends \yii\db\ActiveRecord
     {
         return [
             [['buddy_id', 'cart_id'], 'required'],
-            [['buddy_id', 'cart_id', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['buddy_id', 'traveller_id', 'cart_id', 'status', 'created_at', 'updated_at'], 'integer'],
         ];
     }
 
@@ -51,6 +53,7 @@ class Buddy extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'buddy_id' => Yii::t('app', 'Buddy ID'),
+            'traveller_id' => Yii::t('app', 'Traveller ID'),
             'cart_id' => Yii::t('app', 'Cart ID'),
             'status' => Yii::t('app', 'Status'),
             'created_at' => Yii::t('app', 'Created At'),
@@ -61,6 +64,11 @@ class Buddy extends \yii\db\ActiveRecord
     public function getCart()
     {
         return $this->hasOne(Cart::className(), ['id' => 'cart_id']);
+    }
+
+    public function getBuddy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'buddy_id']);
     }
 
     /**

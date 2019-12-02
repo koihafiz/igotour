@@ -26,13 +26,13 @@ header( "refresh:5;url=/site/index" );                      // redirect to home 
 
                     <div class="col-lg-12 text-center">
                         <blockquote class="u-blockquote-v4 g-color-black g-color-primary--before g-color-primary--after g-font-weight-600 g-font-size-35 g-line-height-1_8 g-mb-50" style="font-size: 1.7rem !important">
-                            Your payment has been
-                            <span class="g-brd-bottom--dotted g-brd-2 g-brd-primary g-color-primary g-pb-5">successful</span>. Just
-                            <span class="g-brd-bottom--dotted g-brd-2 g-brd-primary g-color-primary g-pb-5">believe</span> it.
+                            YOUR PAYMENT HAS BEEN
+                            <span class="g-brd-bottom--dotted g-brd-2 g-brd-primary g-color-primary g-pb-5">SUCCESSFULL</span>. YOUR REQUEST HAS BEEN RECEIVED AND DELIVERED TO THE
+                            <span class="g-brd-bottom--dotted g-brd-2 g-brd-primary g-color-primary g-pb-5">BUDDIES</span> AROUND YOU.
                         </blockquote>
                         <h4 class="h6 g-font-weight-700 text-uppercase g-mb-0">
                             <span class="d-inline-block g-width-40 g-height-2 g-bg-primary g-pos-rel g-top-minus-3 mr-2"></span>
-                            Enjoy travelling with Local Buddy
+                            Kindly click the bottom close button and go to " Buddy Offer " menu to see the buddies that ready to go.
                         </h4>
                     </div>
 

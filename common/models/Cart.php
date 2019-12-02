@@ -17,7 +17,11 @@ use yii\behaviors\TimestampBehavior;
  * @property int $country_id
  * @property int $state_id
  * @property int $pax
+ * @property int $male
+ * @property int $female
+ * @property int $infant
  * @property string $pickup_location
+ * @property string $specific_place
  * @property double $duration
  * @property double $charge
  * @property int $date
@@ -51,11 +55,11 @@ class Cart extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'service_id', 'country_id', 'state_id', 'duration', 'charge', 'date', 'start_time', 'end_time'], 'required'],
-            [['user_id', 'buddy_id', 'service_id', 'country_id', 'state_id', 'pax', 'date', 'start_time', 'end_time', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['user_id', 'buddy_id', 'service_id', 'country_id', 'state_id', 'pax', 'male', 'female', 'infant', 'date', 'start_time', 'end_time', 'status', 'created_at', 'updated_at'], 'integer'],
             [['duration', 'charge'], 'number'],
             [['payment_id'], 'string', 'max' => 17],
             [['service_title'], 'string', 'max' => 123],
-            [['pickup_location'], 'string', 'max' => 321],
+            [['pickup_location', 'specific_place'], 'string', 'max' => 321],
         ];
     }
 
@@ -74,7 +78,11 @@ class Cart extends \yii\db\ActiveRecord
             'country_id' => Yii::t('app', 'Country ID'),
             'state_id' => Yii::t('app', 'State ID'),
             'pax' => Yii::t('app', 'Pax'),
+            'male' => Yii::t('app', 'Male'),
+            'female' => Yii::t('app', 'Female'),
+            'infant' => Yii::t('app', 'Infant'),
             'pickup_location' => Yii::t('app', 'Pickup Location'),
+            'specific_place' => Yii::t('app', 'Specific Place'),
             'duration' => Yii::t('app', 'Duration'),
             'charge' => Yii::t('app', 'Charge'),
             'date' => Yii::t('app', 'Date'),
