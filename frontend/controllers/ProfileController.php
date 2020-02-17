@@ -551,6 +551,11 @@ class ProfileController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionCurlecResponse()
+    {
+        return $this->render('curlecResponse',['data' => Yii::$app->request->get()]);
+    }
+
     /**
      * Finds the Profile model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

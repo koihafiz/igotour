@@ -246,7 +246,7 @@ class MobileController extends Controller
         $model->specific_place = $data['specificplace'];
 
         if($model->save())
-            return ['status' => true, 'order_id' => $model->id];
+            return ['status' => true, 'order_id' => $model->id, 'cart_id' => $model->id];
         else
             return ['status' => false];
     }
@@ -259,7 +259,7 @@ class MobileController extends Controller
 
         $user_id = $data['user_id'];
 
-        $sql = "SELECT a.*,b.name as cname,c.name as sname FROM cart a, country b, state c WHERE a.`country_id` = b.`id` AND a.`state_id` = c.`id` AND a.user_id = $user_id AND a.status = 0";
+        $sql = "SELECT a.*,b.name as cname,c.name as sname FROM cart a, country b, state c WHERE a.`country_id` = b.`id` AND a.`state_id` = c.`id` AND a.user_id = $user_id AND (a.status = 0 OR a.status = 10)";
 
         $model = Yii::$app->db->createCommand($sql);
         $cartData = $model->queryAll();
@@ -391,6 +391,17 @@ class MobileController extends Controller
         }
     }
 
+    public function actionGoToCurlec($user_id=null,$price=0,$cartId)
+    {
+        $user = User::findOne($user_id);
+
+        if($user_id != null && $price > 0)
+        {
+
+        }
+
+    }
+
     public function actionCallback()
     {
         $buddyIDs = [];
@@ -478,6 +489,11 @@ class MobileController extends Controller
         }
     }
 
+    public function actionCallbackCurlec()
+    {
+
+    }
+
     public function actionBuddyRequestList()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
@@ -535,12 +551,13 @@ class MobileController extends Controller
         Yii::$app->response->format = Response::FORMAT_JSON;
         $data = Yii::$app->request->post();
 
-        $cart_ids = $data['cart_id'];
+        $user_id = $data['user_id'];
 
-        $cart_ids_string = array_map('intval', explode(',', $cart_ids));
-        $cart_ids_int = trim(implode(',', $cart_ids_string),'"');
+        //$cart_ids_string = array_map('intval', explode(',', $cart_ids));
+        //$cart_ids_int = trim(implode(',', $cart_ids_string),'"');
 
-        $sql = 'SELECT a.*,DATE_FORMAT(FROM_UNIXTIME(a.date),"%e %b %Y") as datez,DATE_FORMAT(FROM_UNIXTIME(a.start_time),"%H:%i") as timefrom,DATE_FORMAT(FROM_UNIXTIME(a.end_time),"%H:%i") as timeto FROM cart a WHERE a.id IN ('.$cart_ids_int.') AND a.status = 1';
+        //$sql = 'SELECT a.*,DATE_FORMAT(FROM_UNIXTIME(a.date),"%e %b %Y") as datez,DATE_FORMAT(FROM_UNIXTIME(a.start_time),"%H:%i") as timefrom,DATE_FORMAT(FROM_UNIXTIME(a.end_time),"%H:%i") as timeto FROM cart a WHERE a.id IN ('.$cart_ids_int.') AND a.status = 10';
+        $sql = 'SELECT a.*,DATE_FORMAT(FROM_UNIXTIME(a.date),"%e %b %Y") as datez,DATE_FORMAT(FROM_UNIXTIME(a.start_time),"%H:%i") as timefrom,DATE_FORMAT(FROM_UNIXTIME(a.end_time),"%H:%i") as timeto FROM cart a WHERE a.user_id = '.$user_id.' AND (a.status = 0 OR a.status = 10)';
 
         $model = Yii::$app->db->createCommand($sql);
         $data = $model->queryAll();
@@ -768,7 +785,7 @@ class MobileController extends Controller
             ->leftJoin('country','country.id = cart.country_id')
             ->leftJoin('state','state.id = cart.state_id')
             ->where(['state_service.user_id'=> (int)$buddyID,
-                'cart.status' => 1,
+                'cart.status' => 10,
                 //'buddy.status'=> 0,
             ])
             ->andWhere(['IS', 'cart.buddy_id', NULL])
@@ -780,7 +797,7 @@ class MobileController extends Controller
         if($plan)
             return ['status' => true, 'total' => $plan,'nowTimestamp' => time()];
         else
-            return ['status' => false];
+            return ['status' => false, 'error' => $plan->createCommand()->getRawSql()];
     }
 
     public function actionFindMyListTravellerRequest()
@@ -810,8 +827,7 @@ class MobileController extends Controller
             ->leftJoin('services','services.id = cart.service_id')
             ->leftJoin('country','country.id = cart.country_id')
             ->leftJoin('state','state.id = cart.state_id')
-            ->where(['state_service.user_id'=> (int)$buddyID,
-                'cart.status' => 1,
+            ->where(['state_service.user_id'=> (int)$buddyID, 'cart.status' => 10,
                 //'buddy.status'=> 0,
             ])
             //->andWhere(['=', 'buddy.buddy_id', Yii::$app->user->identity->id])
@@ -845,6 +861,42 @@ class MobileController extends Controller
         else
             return ['status' => false];
 
+    }
+
+    public function actionSelectBuddy($cart_id, $user_id)
+    {
+        $cart = Cart::findOne($cart_id);
+        $user = User::findOne($user_id);
+
+        $buddies = StateService::find()->where(['state_id'=>$cart->state_id,'service_id'=>$cart->service_id])->all();
+        foreach($buddies as $buddy)
+        {
+            $modelBuddy = User::findOne($buddy['user_id']);
+
+            $buddyIDs[] = $modelBuddy->id;
+
+            Yii::$app->mailer
+                ->compose(
+                    ['html' => 'inviteBudy-html'],
+                    ['username' => $modelBuddy->username,'cart' => $cart,'user' => $user]
+                )
+                ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
+                ->setTo($modelBuddy->email)
+                ->setSubject('Tour Guide Invitation for Service ' . $cart->service_title)
+                ->send();
+
+//                        $model = new Buddy();
+//                        $model->buddy_id = $buddy['user_id'];
+//                        $model->traveller_id = $findCartIds->user_id;
+//                        $model->cart_id = $id;
+//                        $model->status = 0;
+//                        $model->save();
+
+        }
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        return ['status' => true];
     }
 
 }

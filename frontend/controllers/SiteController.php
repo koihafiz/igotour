@@ -198,6 +198,11 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
+    public function actionCurlecResponse()
+    {
+        return $this->render('curlecResponse',['data' => Yii::$app->request->get()]);
+    }
+
     /**
      * Displays contact page.
      *
